@@ -1,2 +1,2 @@
 # ron
-Reach Out Now - Volunteering and CommunityService Platform 
+Reach Out Now - Volunteering and Community Service Platform 
