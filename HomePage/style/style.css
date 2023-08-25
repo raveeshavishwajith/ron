@@ -8,6 +8,15 @@ body {
     background-color: white;
 }
 
+#preloader {
+    background: #000 url(../ron_logo.gif) no-repeat center center;
+    background-size: 20%;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+}
+
 .home .cover {
     height: calc(80vh - 80px);
     background-position: center;
@@ -32,7 +41,7 @@ body {
 
 
 
-button {
+.home button {
     background-color: #090752;
     margin-left: 10px;
     border-radius: 3px;
@@ -49,20 +58,20 @@ button {
     font-size: 15px;
 }
 
-/* .container
+/* .homecontainer
 {
     position: relative;
     width:100%;
     max-width:400px;
 }
 
-.container img
+.homecontainer img
 {
     width:600px;
     height:400px;
 } */
 
-.home .container .register {
+.home .homecontainer .register {
     position: absolute;
     top: 60%;
     margin-left: 50%;
