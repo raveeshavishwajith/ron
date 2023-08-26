@@ -113,10 +113,15 @@ body{
     color:#d4dff7;
 } 
 
+#profile{
+    padding-top: 50px;
+}
+
 #interface{
     width:100%;
     margin-left: 400px;
     position:relative;
+    min-height: 1000px;
 }
 
 #interface .navigation{

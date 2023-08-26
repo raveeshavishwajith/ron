@@ -1,3 +1,5 @@
+<?php require_once 'queries.php' ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -17,13 +19,28 @@
         <h1 style="text-align: center">Event Manager Registration Form</h1>
         <br>
         <p>Please fill in this form to create an account.</p>
+        <br>
+        <?php
+        if (count($errors) > 0) {
+        ?>
+          <div class="alert danger">
+            <?php
+            foreach ($errors as $error) {
+              echo $error;
+            }
+            ?>
+          </div>
+        <?php
+        }
+        ?>
+
         <hr>
 
-        <label for="firstname">First Name:</label>
-        <input type="text" placeholder="Enter First Name" name="firstname" id="firstname" required>
+        <label for="first_name">First Name:</label>
+        <input type="text" placeholder="Enter First Name" name="first_name" id="first_name" required>
 
-        <label for="lastname">Last Name:</label>
-        <input type="text" placeholder="Enter Last Name" name="lastname" id="lastname" required>
+        <label for="last_name">Last Name:</label>
+        <input type="text" placeholder="Enter Last Name" name="last_name" id="last_name" required>
 
         <label for="gender">Gender:</label><br>
         <input type="radio" name="gender" id="male" value="male">
@@ -42,6 +59,9 @@
         <label for="psw-repeat">Repeat Password</label>
         <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
 
+        <label for="contactnum">Contact Number:</label><br>
+        <input type="number" id="contactnum" name="contactnum" placeholder="Enter contact number"><br>
+
         <label for="membership">Organization you are representing:</label><br>
         <input type="radio" name="society" id="IEEE" value="IEEE">
         <label for="IEEE" class="normal">IEEE</label>
@@ -56,13 +76,12 @@
         <label for="CompSoc" class="normal">CompSoc</label>
         <br><br>
 
-        <label for="upload">Upload approval letter:</label><br>
-        <label for="myfile">Select a file:</label>
-        <input type="file" id="myfile" name="myfile"><br>
+        <label for="code">Confirmation Code:</label><br>
+        <input type="number" id="code" name="code" placeholder="Enter your organization code"><br>
         <hr>
         <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
 
-        <button type="submit" class="registerbtn">Register</button>
+        <button type="submit" class="registerbtn" name="managerreg">Register</button>
 
       </form>
     </div>

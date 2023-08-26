@@ -19,7 +19,7 @@
         $memberships = $_POST['membership'];
         
         if($password == $re_password){
-            $sql = "SELECT * FROM members_details WHERE reg_number = '$regnum' or email = '$email'";
+            $sql = "SELECT * FROM login WHERE username = '$regnum' or email = '$email'";
             $result = mysqli_query($con, $sql);
             if(mysqli_num_rows($result) == 0){
                 if(isset($_FILES['profile_picture'])){
@@ -35,11 +35,57 @@
 
                 $securepassword = password_hash($password,PASSWORD_DEFAULT);
         
-                $sql = "INSERT INTO members_details VALUES ('$regnum','$firstname','$lastname','$gender','$yos','$email','$course','$contactnumber','$securepassword','$pastexperience','$memberships','$file_name', 0)";
+                $sql = "INSERT INTO members_details VALUE ('$regnum','$firstname','$lastname','$gender','$yos','$email','$course','$contactnumber','$securepassword','$pastexperience','$memberships','$file_name', 0)";
         
+                $result = mysqli_query($con,$sql);
+
+                $sql = "INSERT INTO login VALUE ('$email', '$securepassword', 'member')";
+
                 $result = mysqli_query($con,$sql);
         
                 header("location: login.php");
+            }
+            else{
+                $errors['user-error'] = "The user already exists!.";
+            }
+        }
+        else{
+            $errors['error'] = "Those passwords didn't match. Try again.";
+        }
+
+    }
+    if(isset($_POST['managerreg'])){
+        $firstname = $_POST['first_name'];
+        $lastname = $_POST['last_name'];
+        $gender = $_POST['gender'];
+        $email = $_POST['email'];
+        $password = $_POST['psw'];
+        $re_password = $_POST['psw-repeat'];
+        $contactnumber = $_POST['contactnum'];
+        $membership = $_POST['society'];
+        $code = $_POST['code'];
+        
+        if($password == $re_password){
+            $sql = "SELECT * FROM login WHERE email = '$email'";
+            $result = mysqli_query($con, $sql);
+            if(mysqli_num_rows($result) == 0){
+                $sql = "SELECT confirm_code FROM organization WHERE organization = '$membership' ";
+                $result = mysqli_query($con, $sql);
+                $row = mysqli_fetch_assoc($result);
+                if($code == $row['confirm_code']){
+                    $securepassword = password_hash($password,PASSWORD_DEFAULT);
+                    $sql = "INSERT INTO managers_details VALUE ('$firstname','$lastname','$gender','$email','$securepassword','$contactnumber','$memberships')";
+                    $result = mysqli_query($con,$sql);
+    
+                    $sql = "INSERT INTO login VALUE ('$email', '$securepassword', 'manager')";
+    
+                    $result = mysqli_query($con,$sql);
+            
+                    header("location: login.php");
+                }
+                else{
+                    $errors['code-error'] = "Confirmation code is wrong";
+                }
             }
             else{
                 $errors['user-error'] = "The user already exists!.";
@@ -56,7 +102,7 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        $sql = "SELECT reg_number, password FROM members_details WHERE reg_number = '$username' or email = '$username'";
+        $sql = "SELECT email, password FROM login WHERE email = '$username'";
 
         $result = mysqli_query($con, $sql);
 

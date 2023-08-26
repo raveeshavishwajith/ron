@@ -43,7 +43,7 @@
 
     <div class="items">
         <li> <i class="fas fa-menorah" ></i><a href="#"> Dashboard</a></li>
-        <li><i class="fas fa-user" ></i><a href="#"> Profile</a></li>
+        <li><i class="fas fa-user" ></i><a href="#profile"> Profile</a></li>
         <li><i class="fas fa-database" ></i><a href="#"> complaint </a></li>
         <li><i class="fas fa-question-circle" ></i><a href="#"> Help</a></li>
         <li><i class="fas fa-user" ></i><a href="#"> Calendar</a></li>
@@ -158,6 +158,129 @@
         <div class="swiper-pagination"> </div>
     </div>
     
+    <div id="profile"></div>
+    <div class="slide-container2">
+        <h3 class="i-name"> Profile</h3><br><br>
+        <table width=100%>
+            <tbody>
+                <tr>
+                    <td>Full Name:</td>
+                    <td>ram</td>
+                </tr>
+                <tr>
+                    <td>UserName:</td>
+                    <td>ram123</td>
+                </tr>
+                <tr>
+                    <td>UserName:</td>
+                    <td>ram123</td>
+                </tr>
+                <tr>
+                    <td>UserName:</td>
+                    <td>ram123</td>
+                </tr>
+                <tr>
+                    <td>UserName:</td>
+                    <td>ram123</td>
+                </tr>
+                <tr>
+                    <td>UserName:</td>
+                    <td>ram123</td>
+                </tr>
+                <tr>
+                    <td>UserName:</td>
+                    <td>ram123</td>
+                </tr>
+
+
+            </tbody>
+            
+        </table>
+        <br><br>
+        <button class="btnMore" ><a href="#" >Edit</a></button>
+    </div>
+
+    <div class="slide-container2">
+        <h3 class="i-name"> Profile</h3><br><br>
+        <table width=100%>
+            <tbody>
+                <tr>
+                    <td>Full Name:</td>
+                    <td>ram</td>
+                </tr>
+                <tr>
+                    <td>UserName:</td>
+                    <td>ram123</td>
+                </tr>
+                <tr>
+                    <td>UserName:</td>
+                    <td>ram123</td>
+                </tr>
+                <tr>
+                    <td>UserName:</td>
+                    <td>ram123</td>
+                </tr>
+                <tr>
+                    <td>UserName:</td>
+                    <td>ram123</td>
+                </tr>
+                <tr>
+                    <td>UserName:</td>
+                    <td>ram123</td>
+                </tr>
+                <tr>
+                    <td>UserName:</td>
+                    <td>ram123</td>
+                </tr>
+
+
+            </tbody>
+            
+        </table>
+        <br><br>
+        <button class="btnMore" ><a href="#" >Edit</a></button>
+    </div>
+
+    <div class="slide-container2">
+        <h3 class="i-name"> Profile</h3><br><br>
+        <table width=100%>
+            <tbody>
+                <tr>
+                    <td>Full Name:</td>
+                    <td>ram</td>
+                </tr>
+                <tr>
+                    <td>UserName:</td>
+                    <td>ram123</td>
+                </tr>
+                <tr>
+                    <td>UserName:</td>
+                    <td>ram123</td>
+                </tr>
+                <tr>
+                    <td>UserName:</td>
+                    <td>ram123</td>
+                </tr>
+                <tr>
+                    <td>UserName:</td>
+                    <td>ram123</td>
+                </tr>
+                <tr>
+                    <td>UserName:</td>
+                    <td>ram123</td>
+                </tr>
+                <tr>
+                    <td>UserName:</td>
+                    <td>ram123</td>
+                </tr>
+
+
+            </tbody>
+            
+        </table>
+        <br><br>
+        <button class="btnMore" ><a href="#" >Edit</a></button>
+    </div>
 
     <div class="slide-container2">
         <h3 class="i-name"> Profile</h3><br><br>
