@@ -17,7 +17,7 @@
         $re_password = $_POST['psw-repeat'];
         $pastexperience = $_POST['past_volunteer_experience'];
         $memberships = $_POST['membership'];
-
+        
         if($password == $re_password){
             $sql = "SELECT * FROM members_details WHERE reg_number = '$regnum' or email = '$email'";
             $result = mysqli_query($con, $sql);
@@ -32,8 +32,10 @@
                 else{
                     $file_name="";
                 }
+
+                $securepassword = password_hash($password,PASSWORD_DEFAULT);
         
-                $sql = "INSERT INTO members_details VALUES ('$regnum','$firstname','$lastname','$gender','$yos','$email','$course','$contactnumber','$password','$pastexperience','$memberships','$file_name', 0)";
+                $sql = "INSERT INTO members_details VALUES ('$regnum','$firstname','$lastname','$gender','$yos','$email','$course','$contactnumber','$securepassword','$pastexperience','$memberships','$file_name', 0)";
         
                 $result = mysqli_query($con,$sql);
         
@@ -63,7 +65,7 @@
     
             if(password_verify($password, $row['password'])){
                 $_SESSION['username'] = $username;
-                header("location: my.php");
+                header("location: ../user_dashboard/user_dashboard.php");
             }
             else{
                 $errors['error'] = "Password doesn't match!";

@@ -16,7 +16,7 @@
   <div class="background" style="filter: blur(15px)"></div>
   <div class="userreg">
     <div class="form">
-      <form action="" method="POST">
+      <form action="" method="POST" enctype="multipart/form-data">
         <h1>Volunteer Registration Form</h1>
         <p>Please fill in this form to create an account.</p>
         <br>
