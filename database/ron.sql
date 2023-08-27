@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 26, 2023 at 11:19 AM
+-- Generation Time: Aug 27, 2023 at 10:12 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -38,8 +38,9 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`email`, `password`, `role`) VALUES
-('r.vishvajith@gmail.com', '$2y$10$okG5X38T/66LKwXdCM8Q1eE8LqeYO5Zz8gS5x9BPYnGmZh3FfXTYK', 'member'),
-('raveesha@ieee.org', '$2y$10$3nFQCyilxCQUdQhK6MGHIOz/OIYYfeIB7qPL2nrxlhn5T5Ym6rDOu', 'manager');
+('r.vishvajith@gmail.com', '$2y$10$McQiwlGa.iSVLhk7NOJRseAdhEonLNwaCWMUjdwBwUS5sjcZVEkiK', 'member'),
+('raveesha@ieee.org', '$2y$10$3nFQCyilxCQUdQhK6MGHIOz/OIYYfeIB7qPL2nrxlhn5T5Ym6rDOu', 'manager'),
+('raveeshavishwajith@gmail.com', '$2y$10$ANP7Yzfp1z4FI8pF9/TAHuYqxjUy7fy8DHYK2neOguaJ22cEUcrKm', 'member');
 
 -- --------------------------------------------------------
 
@@ -54,15 +55,16 @@ CREATE TABLE `managers_details` (
   `email` varchar(40) NOT NULL,
   `password` varchar(255) NOT NULL,
   `contact_number` int(10) NOT NULL,
-  `membership` varchar(10) NOT NULL
+  `membership` varchar(10) NOT NULL,
+  `validation` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `managers_details`
 --
 
-INSERT INTO `managers_details` (`first_name`, `last_name`, `gender`, `email`, `password`, `contact_number`, `membership`) VALUES
-('Raveesha', 'Pathirana', 'male', 'raveesha@ieee.org', '$2y$10$3nFQCyilxCQUdQhK6MGHIOz/OIYYfeIB7qPL2nrxlhn5T5Ym6rDOu', 717144135, '');
+INSERT INTO `managers_details` (`first_name`, `last_name`, `gender`, `email`, `password`, `contact_number`, `membership`, `validation`) VALUES
+('Raveesha', 'Pathirana', 'male', 'raveesha@ieee.org', '$2y$10$3nFQCyilxCQUdQhK6MGHIOz/OIYYfeIB7qPL2nrxlhn5T5Ym6rDOu', 717144135, '', 0);
 
 -- --------------------------------------------------------
 
@@ -91,7 +93,8 @@ CREATE TABLE `members_details` (
 --
 
 INSERT INTO `members_details` (`reg_number`, `first_name`, `last_name`, `gender`, `yos`, `email`, `course`, `contact_no`, `password`, `past_volunteer_experience`, `memberships`, `prof_location`, `validation`) VALUES
-('2020csc045', 'Raveesha', 'Pathirana', 'male', 2, 'r.vishvajith@gmail.com', 'Computer Science', 717144135, '$2y$10$okG5X38T/66LKwXdCM8Q1eE8LqeYO5Zz8gS5x9BPYnGmZh3FfXTYK', 'hehe', 'Array', '2020csc045.png', 0);
+('2020csc001', 'Raveesha', 'Pathirana', 'male', 5, 'raveeshavishwajith@gmail.com', 'wseh', 717144135, '$2y$10$ANP7Yzfp1z4FI8pF9/TAHuYqxjUy7fy8DHYK2neOguaJ22cEUcrKm', 'lsjdg', 'Array', '2020csc001.png', 0),
+('2020csc045', 'Raveesha', 'Pathirana', 'male', 2, 'r.vishvajith@gmail.com', 'Computer Science', 717144135, '$2y$10$McQiwlGa.iSVLhk7NOJRseAdhEonLNwaCWMUjdwBwUS5sjcZVEkiK', 'hehe', 'Array', '2020csc045.png', 0);
 
 -- --------------------------------------------------------
 
