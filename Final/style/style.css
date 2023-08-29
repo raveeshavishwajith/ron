@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
- 
+
 * {
     margin: 0;
     padding: 0;
@@ -14,7 +14,7 @@ body {
     min-height: 100vh;
     background-size: cover;
     background-position: center;
-} 
+}
 
 /* --------- index.html --------- */
 
@@ -541,7 +541,7 @@ body {
 
 /* ----- password reset ----- */
 
-.logincontainer{
+.logincontainer {
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -549,63 +549,65 @@ body {
     opacity: 0.9;
     background-size: cover;
     background-position: center;
+
 }
 
-.wrapper{
+.wrapper {
     position: fixed;
     top: 25%;
     left: 37.5%;
     width: 25%;
-    background: rgba(255,255,255,0.2);
-    border: 2px solid rgba(255,255,255,0.5);
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(15px);
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     color: #fff;
     border-radius: 10px;
     padding: 20px 40px;
     border-radius: 20px;
     justify-content: center;
-    align-items:center ;
+    align-items: center;
 }
 
-.wrapper .form-box{
+.wrapper .form-box {
     width: 100%;
     padding: 30px;
 }
 
 .wrapper .form-box.login {
-   transition: transform .18s ease;
-   transform: translateX(0);
+    transition: transform .18s ease;
+    transform: translateX(0);
 }
 
-.wrapper.active .form-box.login{
+.wrapper.active .form-box.login {
     transition: none;
     transform: translateX(-400px);
 }
 
-.wrapper .form-box.register{
+.wrapper .form-box.register {
     position: absolute;
     transition: none;
     transform: translateX(400px);
 }
 
-.wrapper.active .form-box.register{
+.wrapper.active .form-box.register {
     transition: transform .18s ease;
     transform: translateX(0);
 }
 
-.wrapper h1, p{
+.wrapper h1,
+p {
     text-align: center;
     padding-bottom: 10px;
 }
 
-.from-box h2{
+.from-box h2 {
     font-size: 2em;
     color: #f5f8fb;
     text-align: center;
 }
 
-.input-box{
+.input-box {
     position: relative;
     width: 100%;
     height: 50px;
@@ -614,10 +616,10 @@ body {
 
 }
 
-.input-box label{
+.input-box label {
     position: absolute;
-    top:50%;
-    left:5px;
+    top: 50%;
+    left: 5px;
     transform: translateY(-50%);
     font-size: 1em;
     color: #ffffff;
@@ -628,13 +630,13 @@ body {
 }
 
 .input-box input:focus~label,
-.input-box input:valid~label{
+.input-box input:valid~label {
     top: -5px;
 
 }
 
-.input-box input{
-    width:100% ;
+.input-box input {
+    width: 100%;
     height: 100%;
     background: none;
     border: none;
@@ -646,7 +648,7 @@ body {
 
 }
 
-.input-box .icon{
+.input-box .icon {
     position: absolute;
     right: 8px;
     font-size: 1.2em;
@@ -655,30 +657,95 @@ body {
 
 }
 
-.remember-forget{
+.input-box-select{
+    display: block;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.radio,
+.checkbox{
+    font-weight: 500;
+    vertical-align: middle;
+    color: #fff;
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    padding-top: 5px;
+}
+
+.radio + .radio{
+    margin-left: 20px;
+}
+
+.radio input[type="radio"],
+.checkbox input[type="checkbox"]{
+    display: none;
+}
+
+.radio span,
+.checkbox span{
+    height: 20px;
+    width: 20px;
+    border: 3px solid #fff;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 7px;
+}
+
+.radio span{
+    border-radius: 50%;
+}
+
+.radio span:after,
+.checkbox span:after{
+    content: "";
+    height: 8px;
+    width: 8px;
+    background: #fff;
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 300ms ease-in-out 0s;
+}
+
+.radio span:after{
+    border-radius: 50%;
+}
+
+.radio input[type="radio"]:checked ~ span:after,
+.checkbox input[type="checkbox"]:checked ~ span:after{
+
+    transform: translate(-50%, -50%) scale(1);
+} 
+
+.remember-forget {
     font-size: .9em;
     color: #fff;
     font-weight: 500;
-    margin: -15px 0  15px;
+    margin: -15px 0 15px;
     display: flex;
     justify-content: space-between;
 }
 
-.remember-forget label input{
+.remember-forget label input {
     accent-color: #fff;
     margin-right: 3px;
 }
 
-.remember-forget a{
+.remember-forget a {
     color: #fff;
     text-decoration: none;
 }
 
-.remember-forget a:hover{
+.remember-forget a:hover {
     text-decoration: underline;
 }
 
-.btn{
+.btn {
     width: 100%;
     height: 45px;
     background: #fff;
@@ -692,7 +759,7 @@ body {
 
 }
 
-.login-register{
+.login-register {
     font-size: .9em;
     color: #fff;
     text-align: center;
@@ -707,7 +774,7 @@ body {
 
 }
 
-.login-register p a:hover{
+.login-register p a:hover {
     text-decoration: underline;
 }
 
@@ -733,9 +800,6 @@ body {
     border-color: #c3e6cb;
     text-align: center;
 }
-
-
-/* ----- Register Form ----- */
 
 .msg {
     background: rgba(255, 255, 255, 0.6);
@@ -825,38 +889,6 @@ body {
     font-weight: bold;
 }
 
-.userreg,
-.managerreg {
-    overflow: hidden;
-    overflow-y: scroll;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1.25);
-    opacity: 1;
-    width: 30%;
-    z-index: 1;
-    height: 70%;
-    background-color: #fff;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-    border-radius: 10px;
-
-    transition: top 0ms ease-in-out 200ms,
-        opacity 200ms ease-in-out 0ms,
-        transform 30ms ease-in-out 0ms;
-
-    -ms-overflow-style: none;
-    /* IE and Edge */
-    scrollbar-width: none;
-    /* Firefox */
-}
-
-.userreg::-webkit-scrollbar,
-.managerreg::-webkit-scrollbar {
-    display: none;
-    /*Chrome , Opera and Safari */
-}
-
 .background {
     display: flex;
     justify-content: center;
@@ -869,125 +901,54 @@ body {
     background-position: center;
 }
 
-.background#blur.active {
-    filter: blur(20px);
-    /* pointer-events: none;
-    user-select: none; */
-}
-
-.userreg .form,
-.managerreg .form {
-    width: 95%;
-    margin: auto;
-    margin-top: 3%;
-    margin-bottom: 3%;
-    background: #fff;
-    padding: 30px 35px;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.userreg label,
-.managerreg label {
-    font-weight: 600;
-}
-
-.userreg .normal,
-.managerreg .normal{
-    font-weight: 400;
-    font-size: 100%;
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 
-.userreg input[type=email],
-.userreg input[type=text],
-.userreg input[type=password],
-.userreg input[type=number],
-.userreg input[type=file],
-.managerreg input[type=email],
-.managerreg input[type=text],
-.managerreg input[type=password],
-.managerreg input[type=number],
-.managerreg input[type=file] {
-    width: 100%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    display: inline-block;
-    border: none;
-    background: #f1f1f1;
-}
 
-.userreg input[type=text]:focus,
-.userreg input[type=password]:focus,
-.userreg input[type=email]:focus,
-.userreg input[type=number]:focus,
-.userreg input[type=file]:focus,
-.managerreg input[type=text]:focus,
-.managerreg input[type=password]:focus,
-.managerreg input[type=email]:focus,
-.managerreg input[type=number]:focus,
-.managerreg input[type=file]:focus {
-    background-color: #ddd;
-    outline: none;
-}
+/* ----- Register Form ----- */
 
-/* Overwrite default styles of hr */
-.userreg hr,
-.managerreg hr {
-    border: 1px solid #f1f1f1;
-    margin-bottom: 25px;
-}
-
-/* Set a style for the submit button */
-.userreg .registerbtn,
-.managerreg .registerbtn {
-    background-color: #04AA6D;
-    color: white;
-    padding: 16px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
+.registercontainer {
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('../src/register/regas_form.jpg') no-repeat;
     opacity: 0.9;
+    background-size: cover;
+    background-position: center;
+
 }
 
-.userreg .registerbtn:hover,
-.managerreg .registerbtn:hover {
-    opacity: 1;
+.registercontainer .input-box input::placeholder {
+    color: #fff;
 }
 
-.userreg h1,
-.userreg p,
-.managerreg h1,
-.managerreg p {
-    text-align: center;
+.registercontainer input[type=file]{
+    display: none;
 }
 
-.userreg a,
-.managerreg a {
-    color: dodgerblue;
-}
-
-.userreg .signin,
-.managerreg .signin {
-    background-color: #f1f1f1;
-    text-align: center;
-}
-
-.userreg .alert,
-.managerreg .alert {
+.registercontainer .input-pic label{
+    display: block;
     position: relative;
-    padding: .75rem 1.25rem;
-    margin-bottom: 1rem;
-    border: 1px solid transparent;
-    border-radius: .25rem;
+    background-color: #b0adad;
+    color: #000;
     text-align: center;
+    width: 100%;
+    height: 50px;
+    padding-left: 18px;
+    padding-top: 13px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    margin-top: 30px;
 }
 
-.userreg .alert.danger,
-.managerreg .alert.danger {
-    color: #721c24;
-    background-color: #f8d7da;
-    border-color: #f5c6cb;
-    text-align: center;
+.home-icon{
+    width: 100%;
+    height: auto;
+    padding-left: 20px;
+    padding-top: 20px;
 }

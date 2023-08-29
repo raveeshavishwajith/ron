@@ -4,17 +4,17 @@ require "connectdb.php";
 $errors = array();
 
 // registration
-if (isset($_POST['register'])) {
+if (isset($_POST['member_register'])) {
     $regnum = $_POST['reg_number'];
     $firstname = $_POST['first_name'];
     $lastname = $_POST['last_name'];
     $gender = $_POST['gender'];
     $yos = $_POST['yos'];
     $email = $_POST['email'];
-    $course = $_POST['course'];
-    $contactnumber = $_POST['contact_number'];
     $password = $_POST['psw'];
     $re_password = $_POST['psw-repeat'];
+    $course = $_POST['course'];
+    $contactnumber = $_POST['contact_number'];
     $pastexperience = $_POST['past_volunteer_experience'];
     $memberships = $_POST['membership'];
 
@@ -50,7 +50,7 @@ if (isset($_POST['register'])) {
         $errors['error'] = "Those passwords didn't match. Try again.";
     }
 }
-if (isset($_POST['managerreg'])) {
+if (isset($_POST['manager_register'])) {
     $firstname = $_POST['first_name'];
     $lastname = $_POST['last_name'];
     $gender = $_POST['gender'];
@@ -115,11 +115,11 @@ if (isset($_POST['login'])) {
 // forgetpassword check email
 if (isset($_POST['check_email'])) {
     $email = $_POST['email'];
-    $sql = "SELECT reg_number FROM members_details WHERE email = '$email'";
+    $sql = "SELECT * FROM members_details WHERE email = '$email'";
     $result = mysqli_query($con, $sql);
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
-        $fullname = $row['firstname'] . " " . $row['lastname'];
+        $fullname = $row['first_name'] . " " . $row['last_name'];
         $code = rand(999999, 111111);
         $insert_code = "UPDATE members_details SET validation = '$code' WHERE email = '$email'";
         $result = mysqli_query($con, $insert_code);
@@ -128,7 +128,7 @@ if (isset($_POST['check_email'])) {
             require '../mail_send/mailsend.php';
 
             $subject = "Password Reset Code";
-            $message = "Your password reset code is $code";
+            $message = "Dear $fullname, Your password reset code is $code";
 
             $mail->setFrom($email, $subject);
             $mail->addAddress($email, '$fullname');
@@ -151,6 +151,7 @@ if (isset($_POST['check_email'])) {
     } else {
         $errors['email-error'] = "This email address does not exists!";
     }
+    header('location: forget-password.php');
 }
 
 // forget password check otp
