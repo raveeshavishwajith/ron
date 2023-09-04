@@ -1,19 +1,3 @@
-<?php require_once '../php/queries.php' ;
-
-    if(!isset($_SESSION['username'])){
-        header('location: ../php/login.php');
-    }
-
-    if(isset($_SESSION['username'])){
-        $username = $_SESSION['username'];
-        $sql = "SELECT * FROM members_details WHERE email = '$username'";
-        $result = mysqli_query($con, $sql);
-        $row = mysqli_fetch_assoc($result);
-    }
-
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,26 +16,18 @@
 
 <section id="menu">
     <div class="logo">
-        <img src="ron_logo.jpeg" alt="Logo">
+        <img src="ron_logo.jpeg" alt="Logo here">
         <h2> Volunteer</h2>
-    </div>
-
-    <div class="profilepic">
-        <img src="<?php echo $row['prof_location']?>" alt="">
-    </div>
-
-    <div class="welcome">
-        <h1>Welcome,</h1>
-        <h2><?php echo $row['first_name']." ".$row['last_name'] ?></h2>
     </div>
 
     <div class="items">
         <li> <i class="fas fa-menorah" ></i><a href="#"> Dashboard</a></li>
-        <li><i class="fas fa-user" ></i><a href="#profile"> Profile</a></li>
+        <li><i class="fas fa-user" ></i><a href="#"> Profile</a></li>
         <li><i class="fas fa-database" ></i><a href="#"> complaint </a></li>
         <li><i class="fas fa-question-circle" ></i><a href="#"> Help</a></li>
         <li><i class="fas fa-user" ></i><a href="#"> Calendar</a></li>
         <li><i class="fas fa-sign-out-alt"></i><a href="../../php/queries.php?logout"> Logout</a></li>
+
 
     </div>
 </section>
@@ -162,129 +138,6 @@
         <div class="swiper-pagination"> </div>
     </div>
     
-    <div id="profile"></div>
-    <div class="slide-container2">
-        <h3 class="i-name"> Profile</h3><br><br>
-        <table width=100%>
-            <tbody>
-                <tr>
-                    <td>Full Name:</td>
-                    <td>ram</td>
-                </tr>
-                <tr>
-                    <td>UserName:</td>
-                    <td>ram123</td>
-                </tr>
-                <tr>
-                    <td>UserName:</td>
-                    <td>ram123</td>
-                </tr>
-                <tr>
-                    <td>UserName:</td>
-                    <td>ram123</td>
-                </tr>
-                <tr>
-                    <td>UserName:</td>
-                    <td>ram123</td>
-                </tr>
-                <tr>
-                    <td>UserName:</td>
-                    <td>ram123</td>
-                </tr>
-                <tr>
-                    <td>UserName:</td>
-                    <td>ram123</td>
-                </tr>
-
-
-            </tbody>
-            
-        </table>
-        <br><br>
-        <button class="btnMore" ><a href="#" >Edit</a></button>
-    </div>
-
-    <div class="slide-container2">
-        <h3 class="i-name"> Profile</h3><br><br>
-        <table width=100%>
-            <tbody>
-                <tr>
-                    <td>Full Name:</td>
-                    <td>ram</td>
-                </tr>
-                <tr>
-                    <td>UserName:</td>
-                    <td>ram123</td>
-                </tr>
-                <tr>
-                    <td>UserName:</td>
-                    <td>ram123</td>
-                </tr>
-                <tr>
-                    <td>UserName:</td>
-                    <td>ram123</td>
-                </tr>
-                <tr>
-                    <td>UserName:</td>
-                    <td>ram123</td>
-                </tr>
-                <tr>
-                    <td>UserName:</td>
-                    <td>ram123</td>
-                </tr>
-                <tr>
-                    <td>UserName:</td>
-                    <td>ram123</td>
-                </tr>
-
-
-            </tbody>
-            
-        </table>
-        <br><br>
-        <button class="btnMore" ><a href="#" >Edit</a></button>
-    </div>
-
-    <div class="slide-container2">
-        <h3 class="i-name"> Profile</h3><br><br>
-        <table width=100%>
-            <tbody>
-                <tr>
-                    <td>Full Name:</td>
-                    <td>ram</td>
-                </tr>
-                <tr>
-                    <td>UserName:</td>
-                    <td>ram123</td>
-                </tr>
-                <tr>
-                    <td>UserName:</td>
-                    <td>ram123</td>
-                </tr>
-                <tr>
-                    <td>UserName:</td>
-                    <td>ram123</td>
-                </tr>
-                <tr>
-                    <td>UserName:</td>
-                    <td>ram123</td>
-                </tr>
-                <tr>
-                    <td>UserName:</td>
-                    <td>ram123</td>
-                </tr>
-                <tr>
-                    <td>UserName:</td>
-                    <td>ram123</td>
-                </tr>
-
-
-            </tbody>
-            
-        </table>
-        <br><br>
-        <button class="btnMore" ><a href="#" >Edit</a></button>
-    </div>
 
     <div class="slide-container2">
         <h3 class="i-name"> Profile</h3><br><br>
