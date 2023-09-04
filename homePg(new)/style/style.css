@@ -277,7 +277,7 @@ body {
     left: 25%;
     top: 60%;
 }
-.register{
+/* .register{
     display: flex;justify-content: center;align-items: center;
     transition: 0.3s;
 }
@@ -299,7 +299,7 @@ body {
 }
 .register:hover{
     scale: 110%;
-}
+} */
 
 
 /* upimg */
@@ -322,7 +322,7 @@ body {
     
     color: white;
     text-decoration: none;
-    
+    font-size: 25px;
     background-color: #ce5a98;
     border-radius: 20px;
     padding:20px;
