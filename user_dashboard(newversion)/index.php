@@ -39,7 +39,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="#">
+				<a href="#todo">
 					<i class='bx bxs-calendar-alt' ></i>
 					<span class="text">ToDO List</span>
 				</a>
@@ -281,7 +281,7 @@
 						</tbody>
 					</table>
 				</div>
-				<div class="todo">
+				<div class="todo" id="todo">
 					<div class="head">
 						<h3>Todos </h3>
 						<i class='bx bx-plus' ></i>

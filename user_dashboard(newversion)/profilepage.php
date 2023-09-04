@@ -187,4 +187,10 @@
 </div>
 
 </body>
+<!-- Swiper js!-->
+<script src="swiper-bundle.min.js"></script> 
+
+<!-- JavaScript -->
+<script src="script.js"></script>
+
 </html>

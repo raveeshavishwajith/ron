@@ -20,7 +20,8 @@
                 <li> Additional Details:</li>
             </ul>
         </div>
-        <a href="#"><button class="btnexit">exit</button></a>
+        <a href="index.php"><button class="btnexit">exit</button></a>
+        <a href="eventApplicationForm.php"><button class="btnexit">Apply</button></a>
     </div>
 </body>
 </html>
