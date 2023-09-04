@@ -22,39 +22,27 @@ if (isset($_POST['member_register'])) {
         $sql = "SELECT * FROM login WHERE email = '$email'";
         $result = mysqli_query($con, $sql);
         if (mysqli_num_rows($result) == 0) {
-            if (empty($_FILES['profile_picture'])) {
+            if (isset($_FILES['profile_picture'])) {
                 $ext = pathinfo($_FILES['profile_picture']['name'], PATHINFO_EXTENSION);
                 $file_name = $regnum . "." . $ext;
                 $tmp_name = $_FILES['profile_picture']['tmp_name'];
                 $location = "../src/profile_pictures/";
                 move_uploaded_file($tmp_name, $location . $file_name);
-                $file_location = $location . $file_name;
             } else {
-                if ($gender == 'male') {
-                    $file_location = "../src/dummy_profilepic/malepic.png";
-                } else {
-                    $file_location = "../src/dummy_profilepic/femalepic.png";
-                }
+                $file_name = "";
             }
 
             $securepassword = password_hash($password, PASSWORD_DEFAULT);
 
-            $data = $memberships[0];
+            $sql = "INSERT INTO members_details VALUE ('$regnum','$firstname','$lastname','$gender','$yos','$email','$course','$contactnumber','$securepassword','$pastexperience','$memberships','$file_name', 0)";
 
-            $sql = "INSERT INTO members_details VALUE ('$regnum','$firstname','$lastname','$gender','$yos','$email','$course','$contactnumber','$securepassword','$pastexperience','$data','$file_name', 0)";
             $result = mysqli_query($con, $sql);
-
-            for ($i = 1; $i < sizeof($memberships); $i++) {
-                $data = $data . " , " . $memberships[$i];
-            }
-            $query = "UPDATE members_details SET memberships = '$data' WHERE email = '$email'";
-            mysqli_query($con, $query);
 
             $sql = "INSERT INTO login VALUE ('$email', '$securepassword', 'member')";
-            $result = mysqli_query($con, $sql);
-            session_destroy();
 
-            header("location: ../loginpage/login.php");
+            $result = mysqli_query($con, $sql);
+
+            header("location: login.php");
         } else {
             $errors['user-error'] = "The user already exists!.";
         }
@@ -81,35 +69,15 @@ if (isset($_POST['manager_register'])) {
             $result = mysqli_query($con, $sql);
             $row = mysqli_fetch_assoc($result);
             if ($code == $row['confirm_code']) {
-                $code = rand(9999999999, 1111111111);
-                $sql = "UPDATE organization SET confirm_code = '$code' WHERE organization = '$membership' ";
-                $result = mysqli_query($con, $sql);
                 $securepassword = password_hash($password, PASSWORD_DEFAULT);
-
-                if ($_FILES['profile_picture'] != null) {
-                    $ext = pathinfo($_FILES['profile_picture']['name'], PATHINFO_EXTENSION);
-                    $file_name = $regnum . "." . $ext;
-                    $tmp_name = $_FILES['profile_picture']['tmp_name'];
-                    $location = "../src/profile_pictures/";
-                    move_uploaded_file($tmp_name, $location . $file_name);
-                } else {
-                    if ($gender == 'male') {
-                        $file_name = "../src/dummy_profilepic/malepic.png";
-                    } else {
-                        $file_name = "../src/dummy_profilepic/femalepic.png";
-                    }
-                }
-
-                $sql = "INSERT INTO managers_details VALUE ('$firstname','$lastname','$gender','$email','$securepassword','$contactnumber','$memberships', 0 ,'$file_name')";
+                $sql = "INSERT INTO managers_details VALUE ('$firstname','$lastname','$gender','$email','$securepassword','$contactnumber','$memberships')";
                 $result = mysqli_query($con, $sql);
 
                 $sql = "INSERT INTO login VALUE ('$email', '$securepassword', 'manager')";
 
                 $result = mysqli_query($con, $sql);
 
-                session_destroy();
-
-                header("location: ../loginpage/login.php");
+                header("location: login.php");
             } else {
                 $errors['code-error'] = "Confirmation code is wrong";
             }
@@ -123,25 +91,19 @@ if (isset($_POST['manager_register'])) {
 
 // login
 if (isset($_POST['login'])) {
-    session_destroy();
-    session_start();
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $sql = "SELECT email, password, role FROM login WHERE email = '$username'";
+    $sql = "SELECT email, password FROM login WHERE email = '$username'";
 
     $result = mysqli_query($con, $sql);
 
-    if (mysqli_num_rows($result) == 1) {
+    if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
 
         if (password_verify($password, $row['password'])) {
             $_SESSION['username'] = $username;
-            if ($row['role'] == 'manager') {
-                header("location: ../dashboard/event_manager/index.php");
-            } else {
-                header("location: ../dashboard/user_dashboard");
-            }
+            header("location: ../user_dashboard/user_dashboard.php");
         } else {
             $errors['error'] = "Password doesn't match!";
         }
@@ -153,24 +115,13 @@ if (isset($_POST['login'])) {
 // forgetpassword check email
 if (isset($_POST['check_email'])) {
     $email = $_POST['email'];
-    $sql = "SELECT * FROM login WHERE email = '$email'";
+    $sql = "SELECT * FROM members_details WHERE email = '$email'";
     $result = mysqli_query($con, $sql);
     if (mysqli_num_rows($result) > 0) {
-        $code = rand(999999, 111111);
         $row = mysqli_fetch_assoc($result);
-        if ($row['role'] == 'member') {
-            $sql = "SELECT * FROM members_details WHERE email = '$email'";
-            $result = mysqli_query($con, $sql);
-            $row = mysqli_fetch_assoc($result);
-            $fullname = $row['first_name'] . " " . $row['last_name'];
-            $insert_code = "UPDATE members_details SET validation = '$code' WHERE email = '$email'";
-        } else if ($row['role'] == 'manager') {
-            $sql = "SELECT * FROM managers_details WHERE email = '$email'";
-            $result = mysqli_query($con, $sql);
-            $row = mysqli_fetch_assoc($result);
-            $fullname = $row['first_name'] . " " . $row['last_name'];
-            $insert_code = "UPDATE managers_details SET validation = '$code' WHERE email = '$email'";
-        }
+        $fullname = $row['first_name'] . " " . $row['last_name'];
+        $code = rand(999999, 111111);
+        $insert_code = "UPDATE members_details SET validation = '$code' WHERE email = '$email'";
         $result = mysqli_query($con, $insert_code);
         if ($result) {
 
@@ -189,7 +140,7 @@ if (isset($_POST['check_email'])) {
                 $info = "We've sent a passwrod reset otp to your email - $email";
                 $_SESSION['info'] = $info;
                 $_SESSION['email'] = $email;
-                header('location: ../passwordreset/code.php');
+                header('location: code.php');
                 exit();
             } else {
                 $errors['code-error'] = "Failed while sending code!";
@@ -200,7 +151,7 @@ if (isset($_POST['check_email'])) {
     } else {
         $errors['email-error'] = "This email address does not exists!";
     }
-    header('location: ../passwordreset/forget-password.php');
+    header('location: forget-password.php');
 }
 
 // forget password check otp
@@ -208,28 +159,25 @@ if (isset($_POST['check_otp'])) {
     $email = $_SESSION['email'];
     unset($_SESSION['info']);
     $otp = $_POST['otp'];
-    $sql = "SELECT * FROM login WHERE email = '$email'";
+    $sql = "SELECT * FROM login";
     $result = mysqli_query($con, $sql);
     $row = mysqli_fetch_assoc($result);
     if ($row['role'] == 'manager') {
-        $check_otp = "SELECT * FROM managers_details WHERE email = '$email'";
-        $result = mysqli_query($con, $check_otp);
-    } else if ($row['role'] == 'member') {
-        $check_otp = "SELECT * FROM members_details WHERE email = '$email'";
+        $check_otp = "SELECT * FROM managers_details WHERE validation = '$otp'";
         $result = mysqli_query($con, $check_otp);
     }
-    if (mysqli_num_rows($result) == 1) {
+    else{
+        $check_otp = "SELECT * FROM members_details WHERE validation = '$otp'";
+        $result = mysqli_query($con, $check_otp);
+    }
+    if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
-        if ($row['validation'] == $otp) {
-            $info = "Please create a new password.";
-            $_SESSION['info'] = $info;
-            header('location: ../passwordreset/password.php');
-            exit();
-        } else {
-            $errors['error'] = "You have entered incorrect code!";
-        }
+        $info = "Please create a new password.";
+        $_SESSION['info'] = $info;
+        header('location: password.php');
+        exit();
     } else {
-        $errors['error'] = "There is no user";
+        $errors['error'] = "You have entered incorrect code!";
     }
 }
 
@@ -241,30 +189,24 @@ if (isset($_POST['change_password'])) {
     if ($password == $repassword) {
         $email = $_SESSION['email'];
         $password = password_hash($password, PASSWORD_DEFAULT);
-        $sql = "SELECT * FROM login WHERE email = '$email'";
+        $sql = "SELECT * FROM login";
         $result = mysqli_query($con, $sql);
         $row = mysqli_fetch_assoc($result);
         if ($row['role'] == 'manager') {
             $sql = "UPDATE managers_details SET password = '$password', validation = '0' WHERE email = '$email'";
             $result = mysqli_query($con, $sql);
-        } else if ($row['role'] == 'member') {
+        } else {
             $sql = "UPDATE members_details SET password = '$password', validation = '$code' WHERE email = '$email'";
             $result = mysqli_query($con, $sql);
         }
         $sql = "UPDATE login SET password = '$password' WHERE email = '$email'";
         $result = mysqli_query($con, $sql);
         if ($result) {
-            header("location: ../loginpage/login.php");
+            header("location: login.php");
         } else {
             $errors['db-error'] = "Failed to change your password!";
         }
     } else {
         $errors['password'] = "Confirm password not matched!";
     }
-}
-
-// logout
-if (isset($_GET['logout'])) {
-    session_destroy();
-    header("location: ../index.php");
 }

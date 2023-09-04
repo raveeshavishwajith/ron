@@ -1,0 +1,85 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    text-align: center;
+    background: #ececec;
+}
+
+.logincontainer{
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('../src/login/login.png') no-repeat;
+    opacity: 0.9;
+    background-size: cover;
+    background-position: center;
+}
+
+.register-form {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    width: 450px;
+    height: 70%;
+    padding: 40px 30px;
+    border-radius: 10px;
+    background: #ececec;
+    box-shadow: 10px 10px 15px #c7c4c4, -10px -10px 15px #fff;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.register-form img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50px;
+    box-shadow: 6px 6px 12px #c7c4c4, -6px -6px 12px #fff;
+}
+
+.register-form h1 {
+    font-size: 36px;
+    color: #999;
+    margin-top: 5px;
+}
+
+.register-form label{
+    padding: 10px 20px;
+
+}
+
+.register-form input[type=text],
+.register-form input[type=number],
+
+.register-form input[type=file] {
+    width: 100%;
+    margin-bottom: 30px;
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    background: #ececec;
+    box-shadow: inset 10px 10px 15px #c7c4c4, inset -10px -10px 115px #fff;
+}
+
+.register-form button {
+    width: 100%;
+    margin-bottom: 30px;
+    padding: 20px 0;
+    border: none;
+    border-radius: 50px;
+    font-size: 20px;
+    color: #999;
+    background: #ececec;
+    box-shadow: 10px 10px 15px #c7c4c4, -10px -10px 15px #fff;
+}
+
+.register-form button:hover {
+    color: #484747;
+    cursor: pointer;
+    box-shadow: inset 10px 10px 15px #c7c4c4, inset -10px -10px 115px #fff;
+}

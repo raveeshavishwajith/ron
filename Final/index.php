@@ -28,8 +28,8 @@
           <li><a href="#">Map</a></li>
           <li><a href="#">Contact Us</a></li>
 
-          <button><a href="php/login.php">Login</button>
-          <button><a href="php/register.php">SignUp</button>
+          <button><a href="loginpage/login.php">Login</button>
+          <button><a href="registerpage/register.php">SignUp</button>
 
 
         </ul>
