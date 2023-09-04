@@ -8,8 +8,6 @@
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
 	<link rel="stylesheet" href="style.css">
-	<!-- swipper css -->
-    <link rel="stylesheet" href="swiper-bundle.min.css">
 	<script src="https://code.jquery.com/jquery-3.7.0.min.js" ></script>
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 	<title>VolunteerHub</title>
@@ -78,10 +76,10 @@
 			</form>
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification">
+			<!-- <a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
 				
-			</a>
+			</a> -->
 			
 			
 			<a href="#" class="profile">

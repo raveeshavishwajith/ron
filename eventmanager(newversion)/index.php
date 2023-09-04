@@ -78,10 +78,10 @@
 			</form>
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification">
+			<!-- <a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
 				
-			</a>
+			</a> -->
 			
 			
 			<a href="#" class="profile">
@@ -111,7 +111,7 @@
 				</a> -->
 			</div>
 
-			<ul class="box-info">
+			<!-- <ul class="box-info">
 				<li>
 					<i class='bx bxs-calendar-check' ></i>
 					<span class="text">
@@ -130,7 +130,7 @@
 						<p>Service oriented</p>
 					</span>
 				</li>
-			</ul>
+			</ul> -->
 
 	<section id="interface">
     
