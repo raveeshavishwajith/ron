@@ -22,7 +22,7 @@
 		<a href="#" class="brand">
 		<div class="logo">
         <img src="ron_logo.jpeg" alt="Logo here">
-        <h2> Volunteer</h2>
+        <h2> Event Manager</h2>
     </div>
 		</a>
 		<ul class="side-menu top">
@@ -45,9 +45,9 @@
 				</a>
 			</li>
 			<li>
-				<a href="#">
+				<a href="#myevents">
 					<i class='bx bxs-group' ></i>
-					<span class="text">My volunteering</span>
+					<span class="text">My Events</span>
 				</a>
 			</li>
 		</ul>
@@ -78,14 +78,14 @@
 			</form>
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification">
+			<!-- <a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</a>
+				
+			</a> -->
 			
 			
 			<a href="#" class="profile">
-				<img src="profile_image.jpg">
+				<img src="profile_image.jpg" alt="dp here">
 			</a>
 		</nav>
 		<!-- NAVBAR -->
@@ -111,7 +111,7 @@
 				</a> -->
 			</div>
 
-			<ul class="box-info">
+			<!-- <ul class="box-info">
 				<li>
 					<i class='bx bxs-calendar-check' ></i>
 					<span class="text">
@@ -127,10 +127,10 @@
 				<li>
 					<i class='bx bxs-dollar-circle' ></i>
 					<span class="text">
-						<p>Service orinted</p>
+						<p>Service oriented</p>
 					</span>
 				</li>
-			</ul>
+			</ul> -->
 
 	<section id="interface">
     
@@ -223,10 +223,10 @@
 
 </section>
 			<div class="table-data">
-				<div class="order">
+				<div class="order" id="myevents">
 					<div class="head">
-						<h3>Events as Volunteer </h3>
-						<i class='bx bx-search' ></i>
+						<h3>Events as Manager </h3>
+						<a href="addEventForm.php"><i class='bx bx-plus' ></i></a>
 						<i class='bx bx-filter' ></i>
 					</div>
 					<table>
@@ -234,17 +234,19 @@
 							<tr>
 								<th>Event Title</th>
 								<th>Date </th>
-								<th>Status of Participation</th>
+								<th>Event action</th>
+								<th>Application status</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td>
-									<img src="#" alt="event flyer">
+									<img src="flyer.jpg" alt="event flyer">
 									<p>Event Name</p>
 								</td>
 								<td>27-10-2023</td>
 								<td><span class="status completed">Completed</span></td>
+								<td><span class="status completed"> <a href="applicants_list.php">view Applicants</a></span></td>
 							</tr>
 							<tr>
 								<td>
@@ -252,7 +254,9 @@
 									<p>Event Name</p>
 								</td>
 								<td>27-10-2023</td>
-								<td><span class="status pending">Pending</span></td>
+								<!-- <td><span class="status pending">Pending</span></td> -->
+								<td><span class="status pending">Remove</span></td>
+								<td><span class="status completed"> <a href="applicants_list.php">view Applicants</a></span></td>
 							</tr>
 							<tr>
 								<td>
@@ -260,7 +264,9 @@
 									<p>Event Name</p>
 								</td>
 								<td>27-10-2023</td>
-								<td><span class="status process">Process</span></td>
+								<!-- <td><span class="status process">Process</span></td> -->
+								<td><span class="status pending">Remove</span></td>
+								<td><span class="status completed"> <a href="applicants_list.php">view Applicants</a></span></td>
 							</tr>
 							<tr>
 								<td>
@@ -268,7 +274,9 @@
 									<p>Event Name</p>
 								</td>
 								<td>27-10-2023</td>
-								<td><span class="status pending">Pending</span></td>
+								<!-- <td><span class="status pending">Pending</span></td> -->
+								<td><span class="status pending">Remove</span></td>
+								<td><span class="status completed"> <a href="applicants_list.php">view Applicants</a></span></td>
 							</tr>
 							<tr>
 								<td>
@@ -276,7 +284,9 @@
 									<p>Event Name</p>
 								</td>
 								<td>27-10-2023</td>
-								<td><span class="status completed">Completed</span></td>
+								<!-- <td><span class="status completed">Completed</span></td> -->
+								<td><span class="status pending">Remove</span></td>
+								<td><span class="status completed"> <a href="applicants_list.php">view Applicants</a></span></td>
 							</tr>
 						</tbody>
 					</table>
@@ -284,34 +294,34 @@
 				<div class="todo" id="todo">
 					<div class="head">
 						<h3>Todos </h3>
-						<i class='bx bx-plus' ></i>
+						<a href="addTodo.php"><i class='bx bx-plus' ></i></a>
 						<i class='bx bx-filter' ></i>
 					</div>
 					<ul class="todo-list">
 						<li class="completed">
 							<p>Todo List</p>
 							<i class='bx bx-dots-vertical-rounded' ></i>
-							<a href="addTodo.php"><button class="btn">Add Event</button></a>
+							<a href="addTodo.php"><button class="btn">Remove</button></a>
 						</li>
 						<li class="completed">
 							<p>Todo List</p>
 							<i class='bx bx-dots-vertical-rounded' ></i>
-							<a href="addTodo.php"><button class="btn" > Add Event</button></a>
+							<a href="addTodo.php"><button class="btn" >Remove</button></a>
 						</li>
 						<li class="not-completed">
 							<p>Todo List</p>
 							<i class='bx bx-dots-vertical-rounded' ></i>
-							<a href="addTodo.php"><button class="btn" > Add Event</button></a>
+							<a href="addTodo.php"><button class="btn" >Remove</button></a>
 						</li>
 						<li class="completed">
 							<p>Todo List</p>
 							<i class='bx bx-dots-vertical-rounded' ></i>
-							<a href="addTodo.php"><button class="btn" > Add Event</button></a>
+							<a href="addTodo.php"><button class="btn" >Remove</button></a>
 						</li>
 						<li class="not-completed">
 							<p>Todo List</p>
 							<i class='bx bx-dots-vertical-rounded' ></i>
-							<a href="addTodo.php"><button class="btn"> Add Event</button></a>
+							<a href="addTodo.php"><button class="btn">Remove</button></a>
 						</li>
 					</ul>
 				</div>

@@ -21,7 +21,7 @@
             </ul>
         </div>
         <a href="index.php"><button class="btnexit">exit</button></a>
-        <a href="eventApplicationForm.php"><button class="btnexit">Apply</button></a>
+        <!-- <a href="eventApplicationForm.php"><button class="btnexit">Apply</button></a> -->
     </div>
 </body>
 </html>
