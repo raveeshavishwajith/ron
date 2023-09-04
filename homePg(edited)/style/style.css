@@ -34,15 +34,33 @@ body {
     background-repeat: no-repeat;
 }
 
+.home header
+{
+    position: relative;
+    padding: 0 2rem;
+}
 
-.home .logo-name {
+.home .navbar
+{
+    width:100%;
+    height:80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
+.home .navbar .logo-name {
     margin-top: 5px;
     color: black;
     font-size: 24px;
     font-family: Cooper Black;
 }
 
-.home .logo-name span {
+.home .navbar .logo-name span {
     color: 000055;
     font-size: 18px;
     padding: 0px;
@@ -50,38 +68,162 @@ body {
 
 }
 
-.home button {
-    background-color: #090752;
-    margin-right: 0px;
-    border-radius: 3px;
-    padding: 10px;
-    width: 90px;
-    /* align-items: center; */
-
-
+.home .navbar .links
+{
+    display: flex;
+   
 }
 
 
-.home button a {
+.home .links li
+{
+    list-style: none;
+    gap:26rem;
+}
+
+
+.home .navbar .links li a {
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    transition: all 0.3s;
+    margin-right: 25px;
+    text-underline-offset: 8px;
+}
+
+.home .navbar .links li a:hover {
+    color:#080808ed;
+    text-decoration: underline 5px #7a83baed;
+   
+}
+
+
+.home .navbar .toggle_btn
+{
+    color:aliceblue;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+}
+
+
+.home .navbar .action_btn button 
+{
+    background-color: #090752;
+    margin-right: 0px;
+    border-radius: 13px;
+    padding: 10px;
+    width: 90px;
+}
+
+
+.home .navbar .action_btn button a {
     color: white;
     font-weight: bold;
     font-size: 15px;
+    text-decoration: none;
 }
 
-.home button:hover{
-    box-shadow: 0 0 13px #090752;
+.home .navbar .action_btn button:hover{
     transition: 0.5s;
     scale:1.05;
 }
 
 
 
-.home button:active
+.home .navbar .action_btn button:active
 {
     scale:0.95;
 }
 
 
+.home .dropdown_menu
+{
+    position: absolute;
+    display: none;
+    right:2rem;
+    top:60px;
+    height: 0;
+    width:300px;
+    background:rgba(12, 93, 223, 0);
+    backdrop-filter: blur(45px); 
+    border-radius: 10px;
+    overflow: hidden;
+    transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.home .dropdown_menu.open
+{
+    height:340px;
+}
+
+.home .dropdown_menu li
+{
+    padding: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.home .dropdown_menu li a
+{
+    text-decoration: none;
+    font-weight: bold;
+    color: #090752;
+}
+
+.home .dropdown_menu li a:hover
+{
+    background-color: #979696;
+    text-decoration: none;
+    color: white;
+    width:100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.home .dropdown_menu li a button
+{
+    width:100%;
+    display: flex;
+    justify-content: center;
+    color: white;
+    background-color: #090752;
+    border-radius: 13px;
+    padding: 5px;
+}
+
+@media(max-width:992px)
+{
+    .home .navbar .links,
+    .home .navbar .action_btn
+    {
+        display: none;
+    }
+
+    .home .navbar .toggle_btn
+    {
+        display: block;
+    }
+
+    .home .dropdown_menu
+    {
+        display: block;
+
+    }
+}
+
+@media (max-width:576px)
+{
+    .home .dropdown_menu
+    {
+        left:2rem;
+        width:unset;
+    }
+}
 
 .home .homecontainer .register {
     position: static;
@@ -106,60 +248,6 @@ body {
     box-shadow: none;
 }
 
-.home  header
-{
-    position: relative;
-}
-
-.home .logo {
-    margin-left: 10px;
-    margin-right: 3px;
-
-}
-
-.home .menu-bar {
-    background-color: white;
-    height: 80px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    margin-right: 0px;
-    justify-content: space-between;
-    max-width: 1200px;
-
-}
-
-
-
-.home .menu-bar span {
-    /* text-align-last: left; */
-    justify-content: space-between;
-    padding: 0 0 0 5%;
-}
-
-
-
-.home .logo-name {
-    color: black;
-    font-size: 20px;
-    font-family: Cooper Black;
-}
-
-.home .logo-name span {
-    color: 000055;
-    font-size: 13px;
-    margin-top: 0px;
-    padding: 0px;
-    font-family: Arial Unicode MS;
-}
-
-
-.navbar .links{
-    display: flex;
-    gap:2rem;
-}
-
-
 .home .register a {
     color: white;
     font-weight: bold;
@@ -167,109 +255,33 @@ body {
     text-decoration: none;
 }
 
-.home .menu-bar .links {
-    list-style: none;
-    display: flex;
-    width:100%;
-}
-
-.home .menu-bar ul li {
-    padding:10px 10px;
-    /* float:left; */
-    padding-left: 100px;
-    display: inline-block;
-}
-
-.home .menu-bar ul li a {
-    color: black;
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: bold;
-    transition: all 0.3s;
-    margin-right: 25px;
-    text-underline-offset: 8px;
-}
 
 
-.home .menu-bar .toggle_btn
+
+/* @media(max-width:992px)
 {
-            
-    display: none;
+    .home .homecontainer .register 
+    {
+        margin-left:50%;
+        margin-top: -100px;
+        
+        transform: translate(-100);
+        padding:20px;
+        width:250px;
+        margin-left: 200px;
+    }
+
 }
 
-.home .menu-bar .btn
+@media (max-width:576px)
 {
-    
-    margin-right: 0px;
-    width: fit-content;
-    margin-left: 40%;
-}
-
-.home button {
-    background-color: #090752;
-    margin-left: 10px;
-    border-radius: 10px;
-    padding: 10px;
-    width: 90px;
-    /* align-items: center; */
-
-}
-
-.home button a {
-    color: white;
-    font-weight: bold;
-    font-size: 15px;
-    text-decoration: none;
-}
-
-.home .menu-bar ul li a:hover {
-    color:#080808ed;
-    text-decoration: underline 5px #7a83baed;
-    /* text-decoration: solid #be4f23; */
-}
-
-/* .home .dropdown
-{
-    display:none;
-    position: absolute;
-    right:2rem;
-    top:60px;
-    width:303px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: 15px;
-    border-radius: 10px;
-    overflow: hidden;
-
-}
-
-.home .dropdown li
-{
-    padding: 0.7rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-} */
-
-@media(max-width:992px)
-{
-    .menu-bar .links,
-    .menu-bar .btn
+    .home .homecontainer .register 
     {
         display: none;
     }
+} */
 
-    .manu-bar .toggle_btn
-    {
-        display: block;
-    }
 
-    .home .dropdown
-    {
-        display: block;
-
-    }
-}
 
 /* scrollbar-styles */
 
@@ -295,6 +307,7 @@ body {
     width:800px;
     height:200px;
     overflow: hidden;
+    display:
         
 }
 

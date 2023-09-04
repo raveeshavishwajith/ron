@@ -7,11 +7,11 @@ prev.addEventListener('click',() => {
 })
 
 prev.addEventListener('click',() => {
-    slider.scrollLeft+=300
+    slider.scrollRight+=300
 })
 
 next.addEventListener('click',() => {
-    slider.scrollLeft-=300
+    slider.scrollRight-=300
 })
 
 next.addEventListener('click',() => {

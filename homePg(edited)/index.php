@@ -15,63 +15,70 @@
 <body style="display: block;">
   <!-- <div id="preloader"></div> -->
   <div class="home">
-    <header>
-    <div class="menu-bar">
-
-      <div class="logo"><img src="src/index/logo.jpeg" height="50px" width="50px" /></div>
-      <div class="logo-name">RON<span>
-          <p>Reach Out Now</p>
-        </span></div>
     
-        <ul class="links">
-          
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Features</a></li>
-          <li><a href="#">Pages</a></li>
-          <li><a href="#">Details</a></li>
-          <li><a href="#">Contact Us</a></li>
-        </ul>
+    <header>
+      <div class="navbar">
 
-          <div class="btn">
-              <button><a href="php/login.php">Login</a></button>
-              <button><a href="php/register.php">SignUp</a></button>
+        
+        <div class="logo"><img src="src/index/logo.jpg" height="60px" width="100%" /></div>
+        
+      
+
+        
+          <ul>
+          <div class="links">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Pages</a></li>
+              <li><a href="#">Details</a></li>
+              <li><a href="#">Contact Us</a></li>
           </div>
-
-          <!-- <div class="toggle_btn"><img src="src/index/toggle.png" height="20px" width="20px"></div> -->
-  </div>
-<!-- 
-  <div class="dropdown">
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Features</a></li>
-    <li><a href="#">Pages</a></li>
-    <li><a href="#">Details</a></li>
-    <li><a href="#">Contact Us</a></li>
-    <li><a href="#">LogIn</a></li>
-    <li><a href="#">SignUp</a></li>
-
-  </div> -->
-
-    </header>
-
-    <!-- <script>
-      const toggleBtn = document.querySelector('.toggle_btn')
-      const toggleBtnIcon = document.querySelector('.toggle_btn_icon')
-      const DropDownMenu = document.querySelector('.dropdown')
-
-      toggleBtn.onClick=function()
-      {
-        DropDownMenu.classList.toggle('open')
-        const isOpen=DropDownMenu.classList.contains('open')
-
+          </ul>
        
-      }
-    </script> -->
 
+          
+          <div class="action_btn">
+            <button><a href="php/login.php">Login</a></button>
+            <button><a href="php/register.php">SignUp</a></button>
+          </div>
+        
 
+          <div class="toggle_btn">
+              <div class="icon"><img src="src/index/toggle.png" height="20px" width="20px"></div>
+          </div>
+  
+          <div class="dropdown_menu">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Pages</a></li>
+              <li><a href="#">Details</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#"><button>Login</button></a></li>
+              <li><a href="#"><button>SignUp</button></a></li>
+          </div>
+      </div>
+      </header>
+  
+      <script>
+          const toggleBtn = document.querySelector('.toggle_btn')
+          const toggleBtnIcon = document.querySelector('.toggle_btn .icon')
+          const dropDownMenu = document.querySelector('.dropdown_menu')
+  
+          toggleBtn.onclick = function()
+          {
+              dropDownMenu.classList.toggle('open')
+              const isOpen = dropDownMenu.classList.contains('open')
+  
+          
+             
+  
+          }
+  
+      </script>
+    
     <!--Cover Image-->
     <div class="homecontainer">
       <div class="cover"><img src="src/index/cover.jpg" width="100%"></div>
       <button class="register"><a href="php/register.php">Register</a></button>
+      
     </div>
 
 
@@ -252,7 +259,6 @@
           </h3>
 
           <p><a href="#">Home</a></p>
-          <p><a href="#">Features</a></p>
           <p><a href="#">Pages</a></p>
           <p><a href="#">Details</a></p>
           <p><a href="#">Contact Us</a></p>
