@@ -234,7 +234,7 @@
 							<tr>
 								<th>Event Title</th>
 								<th>Date </th>
-								<th>Status of Event</th>
+								<th>Event action</th>
 								<th>Application status</th>
 							</tr>
 						</thead>
@@ -254,7 +254,8 @@
 									<p>Event Name</p>
 								</td>
 								<td>27-10-2023</td>
-								<td><span class="status pending">Pending</span></td>
+								<!-- <td><span class="status pending">Pending</span></td> -->
+								<td><span class="status pending">Remove</span></td>
 								<td><span class="status completed"> <a href="applicants_list.php">view Applicants</a></span></td>
 							</tr>
 							<tr>
@@ -263,7 +264,8 @@
 									<p>Event Name</p>
 								</td>
 								<td>27-10-2023</td>
-								<td><span class="status process">Process</span></td>
+								<!-- <td><span class="status process">Process</span></td> -->
+								<td><span class="status pending">Remove</span></td>
 								<td><span class="status completed"> <a href="applicants_list.php">view Applicants</a></span></td>
 							</tr>
 							<tr>
@@ -272,7 +274,8 @@
 									<p>Event Name</p>
 								</td>
 								<td>27-10-2023</td>
-								<td><span class="status pending">Pending</span></td>
+								<!-- <td><span class="status pending">Pending</span></td> -->
+								<td><span class="status pending">Remove</span></td>
 								<td><span class="status completed"> <a href="applicants_list.php">view Applicants</a></span></td>
 							</tr>
 							<tr>
@@ -281,7 +284,8 @@
 									<p>Event Name</p>
 								</td>
 								<td>27-10-2023</td>
-								<td><span class="status completed">Completed</span></td>
+								<!-- <td><span class="status completed">Completed</span></td> -->
+								<td><span class="status pending">Remove</span></td>
 								<td><span class="status completed"> <a href="applicants_list.php">view Applicants</a></span></td>
 							</tr>
 						</tbody>
@@ -297,27 +301,27 @@
 						<li class="completed">
 							<p>Todo List</p>
 							<i class='bx bx-dots-vertical-rounded' ></i>
-							<a href="addTodo.php"><button class="btn">Edit Event</button></a>
+							<a href="addTodo.php"><button class="btn">Remove</button></a>
 						</li>
 						<li class="completed">
 							<p>Todo List</p>
 							<i class='bx bx-dots-vertical-rounded' ></i>
-							<a href="addTodo.php"><button class="btn" >Edit Event</button></a>
+							<a href="addTodo.php"><button class="btn" >Remove</button></a>
 						</li>
 						<li class="not-completed">
 							<p>Todo List</p>
 							<i class='bx bx-dots-vertical-rounded' ></i>
-							<a href="addTodo.php"><button class="btn" >Edit Event</button></a>
+							<a href="addTodo.php"><button class="btn" >Remove</button></a>
 						</li>
 						<li class="completed">
 							<p>Todo List</p>
 							<i class='bx bx-dots-vertical-rounded' ></i>
-							<a href="addTodo.php"><button class="btn" >Edit Event</button></a>
+							<a href="addTodo.php"><button class="btn" >Remove</button></a>
 						</li>
 						<li class="not-completed">
 							<p>Todo List</p>
 							<i class='bx bx-dots-vertical-rounded' ></i>
-							<a href="addTodo.php"><button class="btn">Edit Event</button></a>
+							<a href="addTodo.php"><button class="btn">Remove</button></a>
 						</li>
 					</ul>
 				</div>
