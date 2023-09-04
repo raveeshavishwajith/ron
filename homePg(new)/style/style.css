@@ -16,6 +16,8 @@ body {
     background-position: center;
 } 
 
+
+
 /* --------- index.html --------- */
 
 #preloader {
@@ -82,7 +84,8 @@ body {
 }
 
 
-.home .navbar .links li a {
+.home .navbar .links li a ,
+.home .navbar .links .nav-dropbtn {
     color: black;
     text-decoration: none;
     font-size: 20px;
@@ -135,6 +138,45 @@ body {
 {
     scale:0.95;
 }
+
+/* nav-dropdown */
+
+.nav-dropbtn {
+   text-decoration: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+
+.nav-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .nav-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    min-width: 160px;
+    z-index: 1;
+  }
+  
+  .nav-dropdown:hover .nav-dropdown-content {
+    display: block;
+  }
+  
+  .nav-dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .nav-dropdown-content a:hover {
+    background-color: #b1afaf;
+  }
+  
 
 
 .home .dropdown_menu
@@ -225,7 +267,89 @@ body {
     }
 }
 
-.home .homecontainer .register {
+
+.homecontainer{
+    display: flex;
+    flex-direction: column;
+}
+.reg{
+    position: absolute;
+    left: 25%;
+    top: 60%;
+}
+.register{
+    display: flex;justify-content: center;align-items: center;
+    transition: 0.3s;
+}
+.register a{
+    width: 150px;
+    height: 50px;
+    background: red;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.3s;
+}
+.register a:hover
+{
+    background: rgb(235, 68, 68);
+}
+.register:hover{
+    scale: 110%;
+}
+
+
+/* upimg */
+.upimg{
+    width: 100%;
+    border: 5px solid #fff;
+    margin-bottom: 200px;
+}
+.upimg-1{
+    width: 100%;
+}
+.upimg-1 img{
+    width: 100%;
+}
+.upimg-2{
+    margin-top:-10%;
+    margin-left: 10%;
+}
+.upimg-2 a{
+    
+    color: white;
+    text-decoration: none;
+    
+    background-color: #ce5a98;
+    border-radius: 20px;
+    padding:20px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 35px black;
+    transition: 0.5s;
+}
+.upimg-2 a:hover{
+    color: #fff;
+    background-color: #a30c5d;
+}
+
+@media only screen and (max-width:768px) {
+    .upimg{
+        width: 100vh;
+        margin-bottom: 100px;
+
+    }
+    .upimg-2 a{
+        padding: 5px;
+    }
+    .test{
+        width: 100vh;
+    }
+}
+
+/* .home .homecontainer .register {
     position: static;
     top:60%;
     margin-left:50%;
@@ -253,7 +377,7 @@ body {
     font-weight: bold;
     font-size: 30px;
     text-decoration: none;
-}
+} */
 
 
 
@@ -307,7 +431,9 @@ body {
     width:800px;
     height:200px;
     overflow: hidden;
-    display:
+    display:;
+    border-radius: 5px;
+
         
 }
 
@@ -349,25 +475,9 @@ body {
     width:150px;
 } 
 
-@media(max-width:992px)
-{
-    .home .main-scroll-div
-    {
-        width:90%;
-        padding:30px 35px 40px 35px;
-   }
 
-}
 
-@media(max-width:820px)
-{
-    .home .main-scroll-div
-    {
-        height: 100%;
-        flex-direction: column;
-   }
 
-}
 
 
 /* Contact Us - styles */
@@ -527,50 +637,8 @@ body {
     
 }
 
-@media(max-width:950px)
-{
-    .home .container
-    {
-        width:90%;
-        padding:30px 35px 40px 35px;
-   }
-}
 
-@media(max-width:820px)
-{
-    .home .container
-    {
-        margin:40px 0;
-        height:100%;
-   }
 
-   .home .container .content
-   {
-        flex-direction: column-reverse;
-   }
-
-   .home .container .content .leftside
-   {
-        width:100%;
-        flex-direction: row;
-        margin-top: 40px;
-        justify-content: center;
-        flex-wrap: wrap;
-   }
-
-   .home .contactUS .content .leftside::before
-   {
-        display:none;
-
-   }
-
-   .home .contactUS .content .rightside
-   {
-        width:100%;
-        margin-left: 0;
-        
-   }
-}
 
 /* footer-styles */
 .home footer {
@@ -758,42 +826,6 @@ body {
     border-radius: 10px;
 }
 
-@media screen and (max-width:768px) {
-    .home .heading h1 {
-        font-size: 45px;
-        margin-top: 30px;
-    }
-
-    .home .hero {
-        margin: 0px;
-
-    }
-
-    .home .content {
-        width: 100%;
-        flex-direction: column;
-        margin: 0px;
-        padding: 0px 40px;
-    }
-
-    .home .hero-content {
-        width: 100%;
-        margin: 35px 0px;
-    }
-
-    .home .hero-content h2 {
-        font-size: 30px;
-    }
-
-    .home .hero-content p {
-        font-size: 18px;
-        margin-bottom: 20px;
-    }
-
-    .home .hero-image {
-        width: 100%;
-    }
-}
 
 @keyframes fadeInUp {
     0% {
