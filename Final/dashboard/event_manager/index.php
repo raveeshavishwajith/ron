@@ -374,10 +374,6 @@ if (isset($_SESSION['username'])) {
 						<p><?php echo $row['first_name'] . " " . $row['last_name'] ?></p>
 					</div>
 					<div class="data">
-						<h4>Registration Number</h4>
-						<p><?php echo $row['reg_number'] ?></p>
-					</div>
-					<div class="data">
 						<h4>Gender</h4>
 						<p><?php echo $row['gender'] ?></p>
 					</div>
