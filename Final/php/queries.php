@@ -138,6 +138,10 @@ if (isset($_POST['login'])) {
         if (password_verify($password, $row['password'])) {
             $_SESSION['username'] = $username;
             if ($row['role'] == 'manager') {
+                $sql = "SELECT membership FROM managers_details WHERE email = '$username'";
+                $result = mysqli_query($con, $sql);
+                $row = mysqli_fetch_assoc($result);
+                $_SESSION['organization'] = $row['membership'];
                 header("location: ../dashboard/event_manager/index.php");
             } else {
                 header("location: ../dashboard/user_dashboard");
@@ -269,10 +273,50 @@ if (isset($_GET['logout'])) {
     header("location: ../index.php");
 }
 
-if(isset($_POST['edit_member'])){
+if (isset($_POST['edit_member'])) {
     echo $_POST['first_name'];
 }
 
-if(isset($_POST['cancle_edit'])){
+if (isset($_POST['cancle_edit'])) {
+    header('location: index.php');
+}
+
+if (isset($_POST['submitEvent'])) {
+    $id = $_SESSION['username'];
+    $organization = $_SESSION['organization'];
+    $title = $_POST['eventTitle'];
+    $venue = $_POST['eventVenue'];
+    $count = $_POST['volunteerCount'];
+    $details = $_POST['moreDetails'];
+    $deadline = $_POST['deadline'];
+    $contact = $_POST['contact'];
+    if ($_FILES['flyer']) {
+        $ext = pathinfo($_FILES['flyer']['name'], PATHINFO_EXTENSION);
+        $file_name = $title . "." . $ext;
+        $tmp_name = $_FILES['flyer']['tmp_name'];
+        $location = "../../src/flyers/";
+        move_uploaded_file($tmp_name, $location . $file_name);
+        $file_location = $location . $file_name;
+    }
+    $sql = "INSERT INTO events (title, venue, no_volunteers, more_details, deadline, contact, flyer, organization) VALUE ('$title', '$venue', '$count', '$details', '$deadline', '$contact', '$file_location', '$organization')";
+    $result = mysqli_query($con, $sql);
+    header('location: index.php');
+}
+
+if (isset($_POST['addtodo'])){
+    $id = $_SESSION['username'];
+    $title = $_POST['eventtitle'];
+    $date = $_POST['eventdate'];
+    $sql = "INSERT INTO todo (email, title, date) VALUE ('$id', '$title', '$date')";
+    $result = mysqli_query($con, $sql);
+    header('location: index.php');
+}
+
+if (isset($_POST['editTodo'])){
+    $id = $_POST['id'];
+    $title = $_POST['eventtitle'];
+    $date = $_POST['eventdate'];
+    $sql = "UPDATE todo SET title = '$title', date = '$date' WHERE id = '$id'";
+    $result = mysqli_query($con, $sql);
     header('location: index.php');
 }
