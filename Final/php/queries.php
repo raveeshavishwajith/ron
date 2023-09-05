@@ -289,16 +289,17 @@ if (isset($_POST['submitEvent'])) {
     $count = $_POST['volunteerCount'];
     $details = $_POST['moreDetails'];
     $deadline = $_POST['deadline'];
+    $eventdate = $_POST['eventdate'];
     $contact = $_POST['contact'];
     if ($_FILES['flyer']) {
         $ext = pathinfo($_FILES['flyer']['name'], PATHINFO_EXTENSION);
         $file_name = $title . "." . $ext;
         $tmp_name = $_FILES['flyer']['tmp_name'];
         $location = "../../src/flyers/";
-        move_uploaded_file($tmp_name, $location . $file_name);
         $file_location = $location . $file_name;
+        move_uploaded_file($tmp_name, $file_location);
     }
-    $sql = "INSERT INTO events (title, venue, no_volunteers, more_details, deadline, contact, flyer, organization) VALUE ('$title', '$venue', '$count', '$details', '$deadline', '$contact', '$file_location', '$organization')";
+    $sql = "INSERT INTO events (author, title, venue, no_volunteers, more_details, deadline, event_date, contact, flyer, organization) VALUE ('$id', '$title', '$venue', '$count', '$details', '$deadline', '$eventdate', '$contact', '$file_location', '$organization')";
     $result = mysqli_query($con, $sql);
     header('location: index.php');
 }
@@ -319,4 +320,35 @@ if (isset($_POST['editTodo'])){
     $sql = "UPDATE todo SET title = '$title', date = '$date' WHERE id = '$id'";
     $result = mysqli_query($con, $sql);
     header('location: index.php');
+}
+
+if (isset($_POST['applyEvent'])){
+    $id = $_POST['id'];
+    $fullname = $_POST['fullname'];
+    $email = $_POST['email'];
+    $role = $_POST['role'];
+    $membership_number = $_POST['mem_num'];
+    $contact = $_POST['contact'];
+    $past = $_POST['past-vol-exp'];
+    $sql = "INSERT INTO events_applications (full_name, email, role, membership_number, contact_number, event_id, past_volunteer_experience) VALUE ('$fullname', '$email', '$role', '$membership_number', '$contact', '$id', '$past')";
+    $result = mysqli_query($con, $sql);
+    header('location: index.php');
+}
+
+if (isset($_GET['accept'])){
+    $id = $_GET['accept'];
+    $sql = "UPDATE events_applications SET status = 'accept' WHERE id = '$id'";
+    $result = mysqli_query($con, $sql);
+}
+
+if (isset($_GET['decline'])){
+    $id = $_GET['decline'];
+    $sql = "UPDATE events_applications SET status = 'decline' WHERE id = '$id'";
+    $result = mysqli_query($con, $sql);
+}
+
+if (isset($_GET['removeTodo'])){
+    $id = $_GET['removeTodo'];
+    $sql = "DELETE FROM todo WHERE id = '$id'";
+    $result = mysqli_query($con, $sql);
 }

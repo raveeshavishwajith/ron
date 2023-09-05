@@ -4,9 +4,6 @@ if (isset($_SESSION['username'])) {
 	$sql = "SELECT * FROM managers_details WHERE email = '$username'";
 	$result = mysqli_query($con, $sql);
 	$row = mysqli_fetch_assoc($result);
-	$organization = $_SESSION['organization'];
-	$sql = "SELECT * FROM events WHERE organization = '$organization'";
-	$result2 = mysqli_query($con, $sql);
 } else {
 	header('location: ../../loginpage/login.php');
 }
@@ -37,7 +34,7 @@ if (isset($_SESSION['username'])) {
 	<section id="sidebar">
 		<a href="#" class="brand">
 			<div class="logo">
-				<img src="ron_logo.jpeg" alt="Logo here">
+				<img src="../../src/logo/logo.png" alt="Logo here">
 				<h2> Event Manager</h2>
 			</div>
 		</a>
@@ -86,7 +83,7 @@ if (isset($_SESSION['username'])) {
 		</ul>
 		<ul class="side-menu">
 			<li>
-				<a href="../../php/queries.php?logout" class="logout">
+				<a href="?logout" class="logout">
 					<i class='bx bxs-log-out-circle'></i>
 					<span class="text">Logout</span>
 				</a>
@@ -109,14 +106,8 @@ if (isset($_SESSION['username'])) {
 			</form>
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification">
-				<i class='bx bxs-bell'></i>
-
-			</a>
-
-
 			<a href="#" class="profile">
-				<img src="profile_image.jpg" alt="dp here">
+				<img src="../<?php echo $row['prof_location'] ?>" alt="dp here">
 			</a>
 		</nav>
 		<!-- NAVBAR -->
@@ -126,7 +117,7 @@ if (isset($_SESSION['username'])) {
 			if ($_GET['id'] == "profile") {
 				displayprofile($row);
 			} elseif ($_GET['id'] == "todo") {
-				displayhome($row);
+				displayhome($con);
 			} elseif ($_GET['id'] == "edit") {
 				displayedit($row);
 			} elseif ($_GET['id'] == "addevent") {
@@ -140,12 +131,15 @@ if (isset($_SESSION['username'])) {
 		} elseif (isset($_GET['editTodo'])) {
 			$id = $_GET['editTodo'];
 			displayeditTODO($con, $id);
+		} elseif (isset($_GET['application'])) {
+			$id = $_GET['application'];
+			displayaplicants($con, $id);
 		} else {
-			displayhome($con, $result2);
+			displayhome($con);
 		}
 		?>
 		<?php
-		function displayhome($con, $result2)
+		function displayhome($con)
 		{ ?>
 
 			<!-- MAIN -->
@@ -163,20 +157,17 @@ if (isset($_SESSION['username'])) {
 							</li>
 						</ul>
 					</div>
-					<!-- <a href="#" class="btn-download">
-					<i class='bx bxs-cloud-download' ></i>
-					<span class="text">Download PDF</span>
-				</a> -->
 				</div>
 
 				<section id="interface">
-
-
 					<div class="slide-container swiper">
-						<h1 style="font-size:30px"> Events</h1>
+						<h1 style="font-size:40px; text-align: center"> Events</h1>
 						<div class="slide-content">
 							<div class="card-wrapper swiper-wrapper">
 								<?php
+								$organization = $_SESSION['organization'];
+								$sql = "SELECT * FROM events WHERE organization = '$organization'";
+								$result2 = mysqli_query($con, $sql);
 								while ($row = mysqli_fetch_assoc($result2)) {
 								?>
 									<div class="card swiper-slide">
@@ -191,23 +182,18 @@ if (isset($_SESSION['username'])) {
 											<p class="description"><?php echo $row['organization'] ?></p>
 
 											<a href="index.php?display=<?php echo $row['id'] ?>"><button class="btnMore"> View More</button></a>
-
-
-											<!-- <button type="button"  onclick="closePopup('popup1')" >Exit</button> -->
 										</div>
 									</div>
-
 								<?php
 								}
 								?>
 							</div>
 						</div>
-
-						<div class="swiper-button-next swiper-navBtn"> </div>
-						<div class="swiper-button-prev swiper-navBtn"> </div>
+						<br>
 						<div class="swiper-pagination"></div>
 					</div>
 				</section>
+
 				<div class="table-data">
 					<div class="order" id="myevents">
 						<div class="head">
@@ -219,6 +205,7 @@ if (isset($_SESSION['username'])) {
 								<tr>
 									<th>Event Title</th>
 									<th>Application Deadline</th>
+									<th>Event Date</th>
 									<th>Application Status</th>
 								</tr>
 							</thead>
@@ -226,7 +213,7 @@ if (isset($_SESSION['username'])) {
 							$email = $_SESSION['username'];
 							$organization = $_SESSION['organization'];
 							$sql = "SELECT * FROM events WHERE author = '$email' AND organization = '$organization'";
-							$result = mysqli_query($con, $sql)
+							$result = mysqli_query($con, $sql);
 							?>
 							<tbody>
 								<?php
@@ -238,7 +225,8 @@ if (isset($_SESSION['username'])) {
 											<p><?php echo $row['title'] ?></p>
 										</td>
 										<td><?php echo $row['deadline'] ?></td>
-										<td><span class="status completed"> <a href="applicants_list.php">View Applicants</a></span></td>
+										<td><?php echo $row['event_date'] ?></td>
+										<td><span class="status completed"> <a href="?application=<?php echo $row['id'] ?>">View Applicants</a></span></td>
 									</tr>
 								<?php } ?>
 							</tbody>
@@ -247,7 +235,7 @@ if (isset($_SESSION['username'])) {
 					<div class="todo" id="todo">
 						<div class="head">
 							<h3>TODO List </h3>
-							<a href="index.php?addTODO"><i class='bx bx-plus'></i></a>
+							<a href="?addTODO"><i class='bx bx-plus'></i></a>
 						</div>
 						<ul class="todo-list">
 							<?php
@@ -260,7 +248,8 @@ if (isset($_SESSION['username'])) {
 									<p><?php echo $row['title'] ?></p>
 									<i class='bx bx-dots-vertical-rounded'></i>
 									<p><?php echo $row['date'] ?></p>
-									<a href="index.php?editTodo=<?php echo $row['id']?>"><button class="btn">Edit Event</button></a>
+									<a href="?editTodo=<?php echo $row['id'] ?>"><button class="btn" style="background: var(--orange);">Edit Event</button></a>
+									<a href="?removeTodo=<?php echo $row['id'] ?>"><button class="btn" style="background: var(--red);">Remove Event</button></a>
 								</li>
 							<?php
 							}
@@ -323,7 +312,7 @@ if (isset($_SESSION['username'])) {
 			</div>
 			<br>
 			<div class="btnedit">
-				<a href="index.php?id=edit"><button>Edit</button> </a>
+				<a href="?id=edit"><button>Edit</button> </a>
 			</div>
 		</div>
 	</div>
@@ -387,7 +376,10 @@ if (isset($_SESSION['username'])) {
 			<label for="deadline">Deadline</label>
 			<input type="date" name="deadline" id="deadline" required>
 			<br><br>
-			<label for="contact">Contact details</label>
+			<label for="eventdate">Event Date</label>
+			<input type="date" name="eventdate" id="eventdate" required>
+			<br><br>
+			<label for="contact">Contact Number</label>
 			<input type="number" name="contact" id="contact" required>
 			<br><br>
 			<label for="flyer">Upload flyer</label>
@@ -421,7 +413,6 @@ if (isset($_SESSION['username'])) {
 			</ul>
 		</div>
 		<a href="index.php"><button class="btnexit">exit</button></a>
-		<!-- <a href="eventApplicationForm.php"><button class="btnexit">Apply</button></a> -->
 	</div>
 
 <?php
@@ -475,7 +466,55 @@ if (isset($_SESSION['username'])) {
 	</div>
 <?php
 		}
+
+		function displayaplicants($con, $id)
+		{
 ?>
+	<main>
+		<div class="table-data">
+			<div class="order" id="managerlist">
+				<div class="head">
+					<h3>Applicants</h3>
+				</div>
+				<table>
+					<thead>
+						<tr>
+							<th>Full Name</th>
+							<th>Email</th>
+							<th>Prefered Role</th>
+							<th>Membership Number</th>
+							<th>Contact Number</th>
+							<th>Past Volunteer Experience</th>
+							<th colspan="2" style="text-align: center;">Action</th>
+						</tr>
+					</thead>
+					<?php
+					$sql = "SELECT * FROM events_applications WHERE event_id = '$id'";
+					$result = mysqli_query($con, $sql)
+					?>
+					<tbody>
+						<?php
+						while ($row = mysqli_fetch_assoc($result)) {
+						?>
+							<tr>
+								<td><?php echo $row['full_name'] ?></td>
+								<td><?php echo $row['email'] ?></td>
+								<td><?php echo $row['role'] ?></td>
+								<td><?php echo $row['membership_number'] ?></td>
+								<td><?php echo $row['contact_number'] ?></td>
+								<td><?php echo $row['past_volunteer_experience'] ?></td>
+								<td><span class="status completed"> <a href="?accept=<?php echo $row['id'] ?>">Accept</a></span></td>
+								<td><span class="status decline"> <a href="?decline=<?php echo $row['id'] ?>">Decline</a></span></td>
+							</tr>
+						<?php } ?>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</main>
+	</section>
+<?php
+		}
 ?>
 
 <!-- Swiper js!-->
