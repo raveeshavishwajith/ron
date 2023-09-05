@@ -4,6 +4,9 @@ if (isset($_SESSION['username'])) {
 	$sql = "SELECT * FROM managers_details WHERE email = '$username'";
 	$result = mysqli_query($con, $sql);
 	$row = mysqli_fetch_assoc($result);
+	$organization = $_SESSION['organization'];
+	$sql = "SELECT * FROM events WHERE organization = '$organization'";
+	$result2 = mysqli_query($con, $sql);
 } else {
 	header('location: ../../loginpage/login.php');
 }
@@ -129,12 +132,20 @@ if (isset($_SESSION['username'])) {
 			} elseif ($_GET['id'] == "addevent") {
 				displayaddevent();
 			}
+		} elseif (isset($_GET['display'])) {
+			$id = $_GET['display'];
+			displayevent($con, $id);
+		} elseif (isset($_GET['addTODO'])) {
+			displayaddTODO();
+		} elseif (isset($_GET['editTodo'])) {
+			$id = $_GET['editTodo'];
+			displayeditTODO($con, $id);
 		} else {
-			displayhome($row);
+			displayhome($con, $result2);
 		}
 		?>
 		<?php
-		function displayhome($row)
+		function displayhome($con, $result2)
 		{ ?>
 
 			<!-- MAIN -->
@@ -165,78 +176,30 @@ if (isset($_SESSION['username'])) {
 						<h1 style="font-size:30px"> Events</h1>
 						<div class="slide-content">
 							<div class="card-wrapper swiper-wrapper">
-								<div class="card swiper-slide">
-									<div class="image-content">
-										<span class="overlay"> </span>
-										<div class="card-image">
-											<img src="flyer.jpg" alt="Banner here" class="card-image">
+								<?php
+								while ($row = mysqli_fetch_assoc($result2)) {
+								?>
+									<div class="card swiper-slide">
+										<div class="image-content">
+											<span class="overlay"> </span>
+											<div class="card-image">
+												<img src="<?php echo $row['flyer'] ?>" alt="Banner here" class="card-img">
+											</div>
+										</div>
+										<div class="card-content">
+											<h2 class="name"><?php echo $row['title'] ?></h2>
+											<p class="description"><?php echo $row['organization'] ?></p>
+
+											<a href="index.php?display=<?php echo $row['id'] ?>"><button class="btnMore"> View More</button></a>
+
+
+											<!-- <button type="button"  onclick="closePopup('popup1')" >Exit</button> -->
 										</div>
 									</div>
-									<div class="card-content">
-										<h2 class="name">WIE EVENT 1</h2>
-										<p class="description"> Event organisation </p>
 
-										<a href="eventDetails.php"><button class="btnMore"> View More</button></a>
-
-
-										<!-- <button type="button"  onclick="closePopup('popup1')" >Exit</button> -->
-									</div>
-								</div>
-
-
-								<div class="card swiper-slide">
-									<div class="image-content">
-										<span class="overlay"> </span>
-										<div class="card-image">
-											<img src="flyer.jpg" alt="Banner here" class="card-image">
-										</div>
-									</div>
-									<div class="card-content">
-										<h2 class="name">WIE EVENT 1</h2>
-										<p class="description"> Event organisation </p>
-
-										<a href="eventDetails.php"><button class="btnMore"> View More</button></a>
-
-
-										<!-- <button type="button"  onclick="closePopup('popup1')" >Exit</button> -->
-									</div>
-								</div>
-
-
-								<<div class="card swiper-slide">
-									<div class="image-content">
-										<span class="overlay"> </span>
-										<div class="card-image">
-											<img src="flyer.jpg" alt="Banner here" class="card-image">
-										</div>
-									</div>
-									<div class="card-content">
-										<h2 class="name">WIE EVENT 1</h2>
-										<p class="description"> Event organisation </p>
-
-										<a href="eventDetails.php"><button class="btnMore"> View More</button></a>
-
-
-										<!-- <button type="button"  onclick="closePopup('popup1')" >Exit</button> -->
-									</div>
-							</div>
-
-							<div class="card swiper-slide">
-								<div class="image-content">
-									<span class="overlay"> </span>
-									<div class="card-image">
-										<img src="flyer.jpg" alt="Banner here" class="card-image">
-									</div>
-								</div>
-								<div class="card-content">
-									<h2 class="name">WIE EVENT 1</h2>
-									<p class="description"> Event organisation </p>
-
-									<a href="eventDetails.php"><button class="btnMore"> View More</button></a>
-
-
-									<!-- <button type="button"  onclick="closePopup('popup1')" >Exit</button> -->
-								</div>
+								<?php
+								}
+								?>
 							</div>
 						</div>
 
@@ -250,98 +213,58 @@ if (isset($_SESSION['username'])) {
 						<div class="head">
 							<h3>Events as Manager </h3>
 							<a href="?id=addevent"><i class='bx bx-plus'></i></a>
-							<i class='bx bx-filter'></i>
 						</div>
 						<table>
 							<thead>
 								<tr>
 									<th>Event Title</th>
-									<th>Date </th>
-									<th>Status of Event</th>
-									<th>Application status</th>
+									<th>Application Deadline</th>
+									<th>Application Status</th>
 								</tr>
 							</thead>
+							<?php
+							$email = $_SESSION['username'];
+							$organization = $_SESSION['organization'];
+							$sql = "SELECT * FROM events WHERE author = '$email' AND organization = '$organization'";
+							$result = mysqli_query($con, $sql)
+							?>
 							<tbody>
-								<tr>
-									<td>
-										<img src="flyer.jpg" alt="event flyer">
-										<p>Event Name</p>
-									</td>
-									<td>27-10-2023</td>
-									<td><span class="status completed">Completed</span></td>
-									<td><span class="status completed"> <a href="applicants_list.php">view Applicants</a></span></td>
-								</tr>
-								<tr>
-									<td>
-										<img src="#" alt="event flyer">
-										<p>Event Name</p>
-									</td>
-									<td>27-10-2023</td>
-									<td><span class="status pending">Pending</span></td>
-									<td><span class="status completed"> <a href="applicants_list.php">view Applicants</a></span></td>
-								</tr>
-								<tr>
-									<td>
-										<img src="#" alt="event flyer">
-										<p>Event Name</p>
-									</td>
-									<td>27-10-2023</td>
-									<td><span class="status process">Process</span></td>
-									<td><span class="status completed"> <a href="applicants_list.php">view Applicants</a></span></td>
-								</tr>
-								<tr>
-									<td>
-										<img src="#" alt="event flyer">
-										<p>Event Name</p>
-									</td>
-									<td>27-10-2023</td>
-									<td><span class="status pending">Pending</span></td>
-									<td><span class="status completed"> <a href="applicants_list.php">view Applicants</a></span></td>
-								</tr>
-								<tr>
-									<td>
-										<img src="#" alt="event flyer">
-										<p>Event Name</p>
-									</td>
-									<td>27-10-2023</td>
-									<td><span class="status completed">Completed</span></td>
-									<td><span class="status completed"> <a href="applicants_list.php">view Applicants</a></span></td>
-								</tr>
+								<?php
+								while ($row = mysqli_fetch_assoc($result)) {
+								?>
+									<tr>
+										<td>
+											<img src="<?php echo $row['flyer'] ?>" alt="event flyer">
+											<p><?php echo $row['title'] ?></p>
+										</td>
+										<td><?php echo $row['deadline'] ?></td>
+										<td><span class="status completed"> <a href="applicants_list.php">View Applicants</a></span></td>
+									</tr>
+								<?php } ?>
 							</tbody>
 						</table>
 					</div>
 					<div class="todo" id="todo">
 						<div class="head">
-							<h3>Todos </h3>
-							<a href="addTodo.php"><i class='bx bx-plus'></i></a>
-							<i class='bx bx-filter'></i>
+							<h3>TODO List </h3>
+							<a href="index.php?addTODO"><i class='bx bx-plus'></i></a>
 						</div>
 						<ul class="todo-list">
-							<li class="completed">
-								<p>Todo List</p>
-								<i class='bx bx-dots-vertical-rounded'></i>
-								<a href="addTodo.php"><button class="btn">Edit Event</button></a>
-							</li>
-							<li class="completed">
-								<p>Todo List</p>
-								<i class='bx bx-dots-vertical-rounded'></i>
-								<a href="addTodo.php"><button class="btn">Edit Event</button></a>
-							</li>
-							<li class="not-completed">
-								<p>Todo List</p>
-								<i class='bx bx-dots-vertical-rounded'></i>
-								<a href="addTodo.php"><button class="btn">Edit Event</button></a>
-							</li>
-							<li class="completed">
-								<p>Todo List</p>
-								<i class='bx bx-dots-vertical-rounded'></i>
-								<a href="addTodo.php"><button class="btn">Edit Event</button></a>
-							</li>
-							<li class="not-completed">
-								<p>Todo List</p>
-								<i class='bx bx-dots-vertical-rounded'></i>
-								<a href="addTodo.php"><button class="btn">Edit Event</button></a>
-							</li>
+							<?php
+							$id = $_SESSION['username'];
+							$sql = "SELECT * FROM todo WHERE email = '$id'";
+							$result = mysqli_query($con, $sql);
+							while ($row = mysqli_fetch_assoc($result)) {
+							?>
+								<li class="completed">
+									<p><?php echo $row['title'] ?></p>
+									<i class='bx bx-dots-vertical-rounded'></i>
+									<p><?php echo $row['date'] ?></p>
+									<a href="index.php?editTodo=<?php echo $row['id']?>"><button class="btn">Edit Event</button></a>
+								</li>
+							<?php
+							}
+							?>
 						</ul>
 					</div>
 				</div>
@@ -449,39 +372,110 @@ if (isset($_SESSION['username'])) {
 	<div class="form">
 		<form action="" method="post" enctype="multipart/form-data">
 			<h2> Add New Event</h2>
-			<label for="orgName">Name of the Organisation: </label>
-			<input type="text" name="orgName" value="" id="orgName" required>
+			<label for="eventTitle">Title of the Event</label>
+			<input type="text" name="eventTitle" id="eventTitle" required>
 			<br><br>
-			<label for="eventTitle">Title of the Event: </label>
-			<input type="text" name="eventTitle" value="" id="eventTitle" required>
+			<label for="eventVenue">Venue of the Event</label>
+			<input type="text" name="eventVenue" id="eventVenue" required>
 			<br><br>
-			<label for="eventVenue">Venue of the Event: </label>
-			<input type="text" name="eventVenue" value="" id="eventVenue" required>
+			<label for="volunteerCount">No.of Volunteers required</label>
+			<input type="number" name="volunteerCount" id="volunteerCount" required>
 			<br><br>
-			<label for="voluntCount">No.of Volunteers required: </label>
-			<input type="text" name="voluntCount" value="" id="voluntCount" required>
+			<label for="moreDetails">More details</label>
+			<textarea name="moreDetails" id="moreDetails" rows="10" style="width: 100%; padding: 2%" required></textarea>
 			<br><br>
-			<label for="moreDet">More details: </label>
-			<input type="textarea" name="moreDet" value="" id="moreDet" required>
+			<label for="deadline">Deadline</label>
+			<input type="date" name="deadline" id="deadline" required>
 			<br><br>
-			<label for="contact">Contact details: </label>
-			<input type="text" name="contact" value="" id="contact" required>
+			<label for="contact">Contact details</label>
+			<input type="number" name="contact" id="contact" required>
 			<br><br>
-			<label for="flyer">Upload flyer: </label>
-			<input type="file" name="flyer" value="" id="flyer" required>
-
+			<label for="flyer">Upload flyer</label>
+			<input type="file" name="flyer" id="flyer" required>
 			<br><br>
-			<input type="submit" name="submit" value="Submit">
-
-
-
-
+			<input type="submit" class="btn" name="submitEvent" value="Submit">
 		</form>
 	</div>
 
 <?php
 
 		}
+
+		function displayevent($con, $id)
+		{
+			$sql = "SELECT * FROM events WHERE id = '$id'";
+			$result = mysqli_query($con, $sql);
+			$row = mysqli_fetch_assoc($result);
+?>
+	<menu></menu>
+	</section>
+	<div class="card">
+		<img src="<?php echo $row['flyer'] ?>" alt="Event Flyer here">
+		<div class="detail">
+			<ul>
+				<li> Title of Event: <?php echo $row['title'] ?></li>
+				<li> Venue: <?php echo $row['venue'] ?></li>
+				<li> No. of Volunteers required: <?php echo $row['no_volunteers'] ?></li>
+				<li> More Details: <?php echo $row['more_details'] ?></li>
+				<li> Deadline: <?php echo $row['deadline'] ?></li>
+			</ul>
+		</div>
+		<a href="index.php"><button class="btnexit">exit</button></a>
+		<!-- <a href="eventApplicationForm.php"><button class="btnexit">Apply</button></a> -->
+	</div>
+
+<?php
+		}
+
+		function displayaddTODO()
+		{
+
+?>
+	<menu></menu>
+	</section>
+	<div class="form-container">
+		<h2>Manage your Events</h2>
+		<form action="" method="POST">
+			<div class="form-group">
+				<label for="eventtitle">Event Title:</label>
+				<input type="text" id="eventtitle" name="eventtitle" required>
+			</div>
+			<div class="form-group">
+				<label for="eventdate">Event Date:</label>
+				<input type="date" id="eventdate" name="eventdate" required>
+			</div>
+			<button type="submit" name="addtodo">ADD TODO List</button>
+		</form>
+	</div>
+<?php
+		}
+
+		function displayeditTODO($con, $id)
+		{
+			$sql = "SELECT * FROM todo WHERE id = '$id'";
+			$result = mysqli_query($con, $sql);
+			$row = mysqli_fetch_assoc($result);
+?>
+	<menu></menu>
+	</section>
+	<div class="form-container">
+		<h2>Manage your Events</h2>
+		<form action="" method="POST">
+			<input type="hidden" name="id" value="<?php echo $id ?>">
+			<div class="form-group">
+				<label for="eventtitle">Event Title:</label>
+				<input type="text" id="eventtitle" name="eventtitle" value="<?php echo $row['title'] ?>" required>
+			</div>
+			<div class="form-group">
+				<label for="eventdate">Event Date:</label>
+				<input type="date" id="eventdate" name="eventdate" value="<?php echo $row['date'] ?>" required>
+			</div>
+			<button type="submit" name="editTodo">Edit TODO List</button>
+		</form>
+	</div>
+<?php
+		}
+?>
 ?>
 
 <!-- Swiper js!-->

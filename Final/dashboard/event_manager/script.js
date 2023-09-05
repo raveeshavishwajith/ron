@@ -15,12 +15,12 @@ allSideMenu.forEach(item=> {
 var swiper = new Swiper(".slide-content", {
     sliderPerView:3,
     spaceBetween:25,
-    slidesPerGroup:3,
-    loop:true,
-    centerSlide:'true',
-    loopFillGroupWithBlank: 'true',
-    fade:'true',
-    grabCursor:'true',
+    slidesPerGroup:1,
+    loop:false,
+    //centerSlide: true,
+    loopFillGroupWithBlank: true,
+    //fade:true,
+    grabCursor:true,
     pagination:{
         el: ".swiper-pagination",
         clickable:true,
