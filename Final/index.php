@@ -237,7 +237,6 @@
                 <img src="src/index/email.png" height="45px" width="45px" />
                 <div class="topic">E-mail</div>
                 <div class="text-one">info.reachoutnow@gmail.com</div>
-                <div class="text-two">info.volunteer@gmail.com</div>
               </div>
             </div>
 
@@ -307,7 +306,7 @@
 
           <p><a href="#">Home</a></p>
           <p><a href="#">Pages</a></p>
-          <p><a href="#">Details</a></p>
+          <p><a href="#">Aoubt Us</a></p>
           <p><a href="#">Contact Us</a></p>
         </div>
         <div class="col">
@@ -330,7 +329,7 @@
           </p>
           <p>
             <img src="src/index/linkin.png" height="20px" width="20px" />
-            LinkIn
+            Linkedin
           </p>
         </div>
       </div>

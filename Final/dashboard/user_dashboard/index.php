@@ -15,7 +15,7 @@ if (isset($_SESSION['username'])) {
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+	<link rel="icon" type="image/x-icon" href="../../src/favicon/favicon1.png" />
 	<!-- Boxicons -->
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
@@ -90,6 +90,7 @@ if (isset($_SESSION['username'])) {
 		</ul>
 	</section>
 	<!-- SIDEBAR -->
+	
 	<!-- CONTENT -->
 	<section id="content">
 		<!-- NAVBAR -->
