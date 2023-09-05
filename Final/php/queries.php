@@ -268,3 +268,11 @@ if (isset($_GET['logout'])) {
     session_destroy();
     header("location: ../index.php");
 }
+
+if(isset($_POST['edit_member'])){
+    echo $_POST['first_name'];
+}
+
+if(isset($_POST['cancle_edit'])){
+    header('location: index.php');
+}
