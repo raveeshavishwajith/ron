@@ -60,7 +60,7 @@ if (isset($_SESSION['username'])) {
 				echo "<li>";
 			}
 			?>
-			<a href="index.php?id=profile">
+			<a href="?id=profile">
 				<i class='bx bxs-user-circle'></i>
 				<span class="text">Profile</span>
 			</a>
@@ -75,7 +75,7 @@ if (isset($_SESSION['username'])) {
 				echo "<li>";
 			}
 			?>
-			<a href="index.php?id=todo#todo">
+			<a href="index.php#todo">
 				<i class='bx bxs-calendar-alt'></i>
 				<span class="text">TODO List</span>
 			</a>
@@ -126,6 +126,8 @@ if (isset($_SESSION['username'])) {
 				displayhome($row);
 			} elseif ($_GET['id'] == "edit") {
 				displayedit($row);
+			} elseif ($_GET['id'] == "addevent") {
+				displayaddevent();
 			}
 		} else {
 			displayhome($row);
@@ -247,7 +249,7 @@ if (isset($_SESSION['username'])) {
 					<div class="order" id="myevents">
 						<div class="head">
 							<h3>Events as Manager </h3>
-							<a href="addEventForm.php"><i class='bx bx-plus'></i></a>
+							<a href="?id=addevent"><i class='bx bx-plus'></i></a>
 							<i class='bx bx-filter'></i>
 						</div>
 						<table>
@@ -438,9 +440,49 @@ if (isset($_SESSION['username'])) {
 			<button type="submit" class="btn" name="cancle_edit" style="margin-top: 10px;">Canel</button>
 		</form>
 	</div>
-<?php } ?>
+<?php }
+
+		function displayaddevent()
+		{
+
+?>
+	<div class="form">
+		<form action="" method="post" enctype="multipart/form-data">
+			<h2> Add New Event</h2>
+			<label for="orgName">Name of the Organisation: </label>
+			<input type="text" name="orgName" value="" id="orgName" required>
+			<br><br>
+			<label for="eventTitle">Title of the Event: </label>
+			<input type="text" name="eventTitle" value="" id="eventTitle" required>
+			<br><br>
+			<label for="eventVenue">Venue of the Event: </label>
+			<input type="text" name="eventVenue" value="" id="eventVenue" required>
+			<br><br>
+			<label for="voluntCount">No.of Volunteers required: </label>
+			<input type="text" name="voluntCount" value="" id="voluntCount" required>
+			<br><br>
+			<label for="moreDet">More details: </label>
+			<input type="textarea" name="moreDet" value="" id="moreDet" required>
+			<br><br>
+			<label for="contact">Contact details: </label>
+			<input type="text" name="contact" value="" id="contact" required>
+			<br><br>
+			<label for="flyer">Upload flyer: </label>
+			<input type="file" name="flyer" value="" id="flyer" required>
+
+			<br><br>
+			<input type="submit" name="submit" value="Submit">
 
 
+
+
+		</form>
+	</div>
+
+<?php
+
+		}
+?>
 
 <!-- Swiper js!-->
 <script src="swiper-bundle.min.js"></script>
