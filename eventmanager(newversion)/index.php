@@ -32,14 +32,7 @@
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
-			<li>
-				<a href="profilepage.php">
-					<i class='bx bxs-user-circle' ></i>
-					<span class="text">Profile</span>
-				</a>
-			</li>
-			<li>
-				<a href="#todo">
+			<a href="#todo">
 					<i class='bx bxs-calendar-alt' ></i>
 					<span class="text">ToDO List</span>
 				</a>
@@ -50,6 +43,14 @@
 					<span class="text">My Events</span>
 				</a>
 			</li>
+			<li>
+				<a href="profilepage.php">
+					<i class='bx bxs-user-circle' ></i>
+					<span class="text">Profile</span>
+				</a>
+			</li>
+			<li>
+				
 		</ul>
 		<ul class="side-menu">
 			<li>
@@ -245,7 +246,7 @@
 									<p>Event Name</p>
 								</td>
 								<td>27-10-2023</td>
-								<td><span class="status completed">Completed</span></td>
+								<td><span class="status pending">Remove</span></td>
 								<td><span class="status completed"> <a href="applicants_list.php">view Applicants</a></span></td>
 							</tr>
 							<tr>
