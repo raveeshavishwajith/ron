@@ -70,7 +70,7 @@ if (isset($_SESSION['username'])) {
 		</ul>
 		<ul class="side-menu">
 			<li>
-				<a href="#" class="logout">
+				<a href="?logout" class="logout">
 					<i class='bx bxs-log-out-circle'></i>
 					<span class="text">Logout</span>
 				</a>
@@ -162,8 +162,6 @@ if (isset($_SESSION['username'])) {
 				<div class="order" id="managerlist">
 					<div class="head">
 						<h3>Event Managers' List </h3>
-						<a href="addEventForm.php"><i class='bx bx-plus'></i></a>
-						<!-- <i class='bx bx-filter' id=filter-icon></i> -->
 					</div>
 
 					<table>
@@ -171,59 +169,24 @@ if (isset($_SESSION['username'])) {
 							<tr>
 								<th>Name</th>
 								<th>Organisation </th>
-								<th>More</th>
+								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>
+							<?php
+							$sql = "SELECT * FROM managers_details ";
+							$result = mysqli_query($con, $sql);
+							while ($row = mysqli_fetch_assoc($result)) {
+							?>
+								<tr>
+									<td><?php echo $row['first_name'] . " " . $row['last_name'] ?></td>
+									<td><?php echo $row['membership'] ?></td>
+									<td><button class="btn" name="removeManager" style="background: var(--orange);">Remove</button></td>
 
-									<p>SampleName</p>
-								</td>
-								<td>SampleOrganisation</td>
-								<td><i class='bx bxs-user-minus'></i><span class="status pending">Remove</span></td>
-
-							</tr>
-							<tr>
-								<td>
-									<img src="#" alt="event flyer">
-									<p>AampleName</p>
-								</td>
-								<td>SampleOrganisation</td>
-								<!-- <td><span class="status pending">Pending</span></td> -->
-								<td><span class="status pending">Remove</span></td>
-
-							</tr>
-							<tr>
-								<td>
-									<img src="#" alt="event flyer">
-									<p>KampleName</p>
-								</td>
-								<td>SampleOrganisation</td>
-								<!-- <td><span class="status process">Process</span></td> -->
-								<td><span class="status pending">Remove</span></td>
-
-							</tr>
-							<tr>
-								<td>
-									<img src="#" alt="event flyer">
-									<p>BampleName</p>
-								</td>
-								<td>SampleOrganisation</td>
-								<!-- <td><span class="status pending">Pending</span></td> -->
-								<td><span class="status pending">Remove</span></td>
-
-							</tr>
-							<tr>
-								<td>
-									<img src="#" alt="event flyer">
-									<p>sampleName</p>
-								</td>
-								<td>SampleOrganisation</td>
-								<!-- <td><span class="status completed">Completed</span></td> -->
-								<td><span class="status pending">Remove</span></td>
-
-							</tr>
+								</tr>
+							<?php
+							}
+							?>
 						</tbody>
 					</table>
 				</div>
@@ -234,8 +197,6 @@ if (isset($_SESSION['username'])) {
 				<div class="order" id="voluntlist">
 					<div class="head">
 						<h3>Voluteers' List </h3>
-						<a href="addEventForm.php"><i class='bx bx-plus'></i></a>
-						<!-- <i class='bx bx-filter' ></i> -->
 					</div>
 					<table>
 						<thead>
@@ -246,111 +207,54 @@ if (isset($_SESSION['username'])) {
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>
+							<?php
+							$sql = "SELECT * FROM members_details ";
+							$result = mysqli_query($con, $sql);
+							while ($row = mysqli_fetch_assoc($result)) {
+							?>
+								<tr>
+									<td>
+										<img src="../<?php echo $row['prof_location'] ?>" alt="profile picture">
+										<?php echo $row['first_name'] . " " . $row['last_name'] ?>
+									</td>
+									<td><?php echo $row['yos'] ?></td>
+									<td><span class="status pending">Remove</span></td>
 
-									<p>SampleName</p>
-								</td>
-								<td>2nd year</td>
-								<td><span class="status pending">Remove</span></td>
-
-							</tr>
-							<tr>
-								<td>
-									<img src="#" alt="event flyer">
-									<p>sampleName</p>
-								</td>
-								<td>SampleOrganisation</td>
-								<!-- <td><span class="status pending">Pending</span></td> -->
-								<td><span class="status pending">Remove</span></td>
-
-							</tr>
-							<tr>
-								<td>
-									<img src="#" alt="event flyer">
-									<p>sampleName</p>
-								</td>
-								<td>SampleOrganisation</td>
-								<!-- <td><span class="status process">Process</span></td> -->
-								<td><span class="status pending">Remove</span></td>
-
-							</tr>
-							<tr>
-								<td>
-									<img src="#" alt="event flyer">
-									<p>sampleName</p>
-								</td>
-								<td>SampleOrganisation</td>
-								<!-- <td><span class="status pending">Pending</span></td> -->
-								<td><span class="status pending">Remove</span></td>
-
-							</tr>
-							<tr>
-								<td>
-									<img src="#" alt="event flyer">
-									<p>sampleName</p>
-								</td>
-								<td>SampleOrganisation</td>
-								<!-- <td><span class="status completed">Completed</span></td> -->
-								<td><span class="status pending">Remove</span></td>
-
-							</tr>
+								</tr>
+							<?php
+							}
+							?>
 						</tbody>
 					</table>
 				</div>
 			</div>
-
 			<div class="table-data">
 				<div class="todo" id="orgcode">
 					<div class="head">
 						<h3>Organisation Code </h3>
-						<a href="addTodo.php"><i class='bx bx-plus'></i></a>
-						<i class='bx bx-filter'></i>
 					</div>
 					<ul class="todo-list">
-						<li class="not-completed">
-							<p>SampleOrganisation</p>
-							<i class='bx bx-dots-vertical-rounded'></i>
-							<p>SampleCode</p>
+						<?php
+						$sql = "SELECT * FROM organization ";
+						$result = mysqli_query($con, $sql);
+						while ($row = mysqli_fetch_assoc($result)) {
+						?>
+							<li class="not-completed">
+								<p><?php echo $row['organization'] ?></p>
+								<i class='bx bx-dots-vertical-rounded'></i>
+								<p><?php echo $row['confirm_code'] ?></p>
 
-						</li>
-						<li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded'></i>
-							<p>SampleCode</p>
-
-						</li>
-						<li class="not-completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded'></i>
-							<p>SampleCode</p>
-
-						</li>
-						<li class="completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded'></i>
-							<p>SampleCode</p>
-
-						</li>
-						<li class="not-completed">
-							<p>Todo List</p>
-							<i class='bx bx-dots-vertical-rounded'></i>
-							<p>SampleCode</p>
-
-						</li>
+							</li>
+						<?php
+						}
+						?>
 					</ul>
 				</div>
-
-
 			</div>
-
-
 			<div class="table-data">
 				<div class="order" id="contact">
 					<div class="head">
 						<h3>Contact Us Details </h3>
-						<a href="addEventForm.php"><i class='bx bx-plus'></i></a>
-						<!-- <i class='bx bx-filter' id=filter-icon></i> -->
 					</div>
 
 					<table>
@@ -359,76 +263,31 @@ if (isset($_SESSION['username'])) {
 								<th>Name</th>
 								<th>Email</th>
 								<th>Description</th>
+								<th>Action</th>
 								<th></th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>
+							<?php
+							$sql = "SELECT * FROM contact_us ";
+							$result = mysqli_query($con, $sql);
+							while ($row = mysqli_fetch_assoc($result)) {
+							?>
+								<tr>
+									<td><?php echo $row['name'] ?></td>
+									<td><?php echo $row['email'] ?></td>
+									<td><?php echo $row['message'] ?></td>
+									<td><span class="status pending">Remove</span></td>
 
-									<p>SampleName</p>
-								</td>
-								<td>email</td>
-								<td>hi hello thnk you for service hksfhskldhfkjshk;EY3IWEN SMN JKWHDWFnkdkhgknsvksahyriwpurehn</td>
-								<td><i class='bx bxs-message-square-x'></i><span class="status pending">Remove</span></td>
-
-							</tr>
-							<tr>
-								<td>
-
-									<p>SampleName</p>
-								</td>
-								<td>email</td>
-								<td>hi hello thnk you for service hksfhskldhfkjshk;EY3IWEN SMN JKWHDWFnkdkhgknsvksahyriwpurehn</td>
-								<td><i class='bx bxs-message-square-x'></i></td>
-
-							</tr>
-							<tr>
-								<td>
-
-									<p>SampleName</p>
-								</td>
-								<td>email</td>
-								<td>hi hello thnk you for service hksfhskldhfkjshk;EY3IWEN SMN JKWHDWFnkdkhgknsvksahyriwpurehn</td>
-								<td><i class='bx bxs-message-square-x'></i></td>
-
-							</tr>
-							<tr>
-								<td>
-
-									<p>SampleName</p>
-								</td>
-								<td>email</td>
-								<td>hi hello thnk you for service hksfhskldhfkjshk;EY3IWEN SMN JKWHDWFnkdkhgknsvksahyriwpurehn</td>
-								<td><i class='bx bxs-message-square-x'></i></td>
-
-							</tr>
-							<tr>
-								<td>
-
-									<p>SampleName</p>
-								</td>
-								<td>email</td>
-								<td>hi hello thnk you for service hksfhskldhfkjshk;EY3IWEN SMN JKWHDWFnkdkhgknsvksahyriwpurehn</td>
-								<td><i class='bx bxs-message-square-x'></i></td>
-
-							</tr>
+								</tr>
+							<?php
+							}
+							?>
 						</tbody>
-
-
 					</table>
 				</div>
 			</div>
-
-
-
-
 			<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-
-
-
-
-
 		</main>
 		<!-- MAIN -->
 	</section>
@@ -441,7 +300,7 @@ if (isset($_SESSION['username'])) {
 
 	<!-- JavaScript -->
 	<script src="script.js"></script>
-	
+
 	<script>
 		const printButton = document.getElementById('print-button');
 

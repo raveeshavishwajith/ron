@@ -8,10 +8,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/x-icon" href="../../src/favicon/favicon1.png" />
   <link rel="stylesheet" href="society-pages.css?<?php echo time() ?>">
+  <link rel="icon" type="image/x-icon" href="../../src/favicon/favicon1.png" />
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <title>IEEE</title>
+  <style>
+    @media only screen and (max-width: 768px) {
+      .banner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        position: relative;
+        margin-bottom: 0;
+      }
+
+      .banner img {
+        bottom: 0;
+        width: 100%;
+        height: auto;
+
+      }
+
+      .society-logo {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        margin-top: 0px;
+      }
+
+      .society-logo img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+
+      .introduction {
+        width: 100%;
+        margin-top: 20px;
+      }
+
+      p {
+        font-size: 15px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -19,7 +60,7 @@
   <header>
     <div class="navbar">
       <div class="logo">
-        <img src="logo.jpg" height="60px" width="100%" />
+        <img src="../../src/index/logo.jpg" height="60px" width="100%" />
       </div>
 
       <ul>
@@ -31,7 +72,7 @@
               <div class="nav-dropbtn">Pages</div>
             </li>
             <div class="nav-dropdown-content">
-              <a href="#">IEEE</a>
+              <a href="../ieee/ieee.php">IEEE</a>
               <a href="#">Yarl IT Hub</a>
               <a href="">Gavel Club</a>
               <a href="../aiesec/aiesec.php">AIESEC</a>
@@ -60,15 +101,15 @@
         <div class="toggle-dropdown">
           <li><a class="toggle-dropbtn">Pages</a></li>
           <div class="toggle-dropdown-content">
-            <a href="#">IEEE</a>
+            <a href="../ieee/ieee.php">IEEE</a>
             <a href="#">Yarl IT Hub</a>
             <a href="#">Gavel Club</a>
             <a href="../aiesec/aiesec.php">AIESEC</a>
           </div>
         </div>
 
-        <li><a href="#aboutus">About Us</a></li>
-        <li><a href="#contactus">Contact Us</a></li>
+        <li><a href="../../#aboutus">About Us</a></li>
+        <li><a href="../../#contactus">Contact Us</a></li>
         <li>
           <a href="../../loginpage/login.php"><button>Login</button></a>
         </li>
@@ -137,10 +178,9 @@
         <h1>About US</h1>
       </div>
       <div class="details">
-        <p> An IEEE Student Branch is a dynamic and student-run organization affiliated with the global Institute of Electrical and Electronics Engineers (IEEE) that operates within universities and colleges around the world. These student branches serve as platforms for students interested in various fields of engineering, technology, and related disciplines to come together, learn, collaborate, and engage in activities that enhance their skills, knowledge, and professional development.
+        <p>The IEEE student branch of the University of Jaffna, consists of IEEE members from the Department of Computer Science and Faculty of Engineering of the University of Jaffna. Located in the northern part of the country. It was formed in 2018 amidst numerous challenges and barriers.
 
-          At the university level, an IEEE Student Branch offers a vibrant community and a wide range of activities that contribute to the academic and personal growth of its members
-          In essence, an IEEE Student Branch at a university acts as a hub of learning, collaboration, and innovation, enriching students' academic experience and preparing them for successful careers in the rapidly evolving fields of engineering and technology.
+          As a newly formed student branch, it strives among more than 100,000 Student and Graduate Student members of IEEE worldwide. It focuses on achieving IEEE’s objectives, namely fostering technological innovation and excellence for the benefit of humanity and promote the theory as well as the practice of all aspects of Computer Science, Computer Engineering, Information Communication Technology, Electrical and Electronics. It provides undergraduates a platform to prosper and flourish their innovative ideas.</p>
         </p>
 
       </div>
@@ -226,11 +266,18 @@
 
       <ul class="socials">
         <li>
-          <a href="#"><i class='bx bxl-facebook-circle'></i></a>
+          <a href="https://www.facebook.com/IEEESBUoJ/"><i class='bx bxl-facebook-circle'></i></a>
         </li>
         <li>
-          <a href="#"><i class='bx bxl-youtube'></i></a>
+          <a href="https://www.youtube.com/@ieeestudentbranch-universi6371/"><i class='bx bxl-youtube'></i></a>
         </li>
+        <li>
+          <a href="https://lk.linkedin.com/company/ieeesbuoj"><i class='bx bxl-linkedin-square'></i></a>
+        </li>
+        <li>
+          <a href="https://twitter.com/IEEESBUOJ"><i class='bx bxl-twitter'></i></a>
+        </li>
+
       </ul>
 
     </div>

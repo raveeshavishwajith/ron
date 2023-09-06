@@ -270,7 +270,7 @@ if (isset($_POST['change_password'])) {
 // logout
 if (isset($_GET['logout'])) {
     session_destroy();
-    header("location: ../index.php");
+    header("location: ../../index.php");
 }
 
 if (isset($_POST['edit_member'])) {
@@ -350,5 +350,13 @@ if (isset($_GET['decline'])){
 if (isset($_GET['removeTodo'])){
     $id = $_GET['removeTodo'];
     $sql = "DELETE FROM todo WHERE id = '$id'";
+    $result = mysqli_query($con, $sql);
+}
+
+if (isset($_POST['submitContactus'])){
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $message = $_POST['message'];
+    $sql = "INSERT INTO contact_us (name, email, message) VALUE ('$name', '$email', '$message')";
     $result = mysqli_query($con, $sql);
 }

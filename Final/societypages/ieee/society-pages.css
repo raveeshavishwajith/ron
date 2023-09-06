@@ -286,7 +286,7 @@ header {
     display: flex;
     height: auto;
     width: 100%;
-    margin-top: 350px;
+    margin-top: 300px;
 }
 
 .text{
@@ -348,6 +348,7 @@ display: flex;
 
 .upcoming-events{
     padding-top: 40px;
+    padding-bottom: 20px;
     
     text-align: center;
     font-size: 18px;
@@ -367,7 +368,7 @@ img {vertical-align: middle;}
 
 .flyers .slideshow-container {
   width: 600px;
-  height: 80vh;
+  height: 100vh;
   overflow: hidden;
   background: rgb(255, 255, 255);
   position: relative;

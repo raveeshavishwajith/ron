@@ -10,6 +10,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
+        @media only screen and (max-width: 768px) {
+
+
+            .banner {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                height: auto;
+                position: relative;
+                margin-bottom: 0;
+            }
+
+            .banner img {
+                bottom: 0;
+                width: 100%;
+                height: auto;
+
+            }
+
+            .society-logo {
+                position: relative;
+                width: 120px !important;
+                height: 120px !important;
+                margin-top: 0px;
+            }
+
+            .society-logo img {
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+            }
+
+            .introduction {
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            p {
+                font-size: 15px;
+            }
+        }
+
         .banner {
             height: 279px;
             width: 100%;
@@ -317,9 +359,7 @@
     <header>
         <div class="navbar">
 
-            <!-- <div class="logo"> -->
-            <img src="logo.jpg" height="60px" width="170px" />
-            <!-- </div> -->
+            <img src="../../src/index/logo.jpg" height="60px" width="170px" />
 
             <ul>
                 <div class="links">
@@ -333,7 +373,7 @@
                             <a href="../ieee/ieee.php">IEEE</a>
                             <a href="#">Yarl IT Hub</a>
                             <a href="">Gavel Club</a>
-                            <a href="#">AIESEC</a>
+                            <a href="../aiesec/aiesec.php">AIESEC</a>
                         </div>
                     </div>
 
@@ -364,12 +404,12 @@
                         <a href="../ieee/ieee.php">IEEE</a>
                         <a href="#">Yarl IT Hub</a>
                         <a href="#">Gavel Club</a>
-                        <a href="#">AIESEC</a>
+                        <a href="../aiesec/aiesec.php">AIESEC</a>
                     </div>
                 </div>
 
-                <li><a href="#aboutus">About Us</a></li>
-                <li><a href="#contactus">Contact Us</a></li>
+                <li><a href="../../#aboutus">About Us</a></li>
+                <li><a href="../../#contactus">Contact Us</a></li>
                 <li>
                     <a href="../../loginpage/login.php"><button>Login</button></a>
                 </li>
@@ -474,19 +514,25 @@
 
             <div class="mySlides fade">
 
-                <img src="flyer1.jpg">
+                <img src="aiesec1.jpg">
 
             </div>
 
             <div class="mySlides fade">
 
-                <img src="flyer2.jpg">
+                <img src="aiesec2.jpg">
 
             </div>
 
             <div class="mySlides fade">
 
-                <img src="flyer3.jpg">
+                <img src="aiesec3.jpg">
+
+            </div>
+
+            <div class="mySlides fade">
+
+                <img src="aiesec4.jpg">
 
             </div>
 
@@ -494,6 +540,7 @@
                 <span class="dot" onclick="currentSlide(1)"></span>
                 <span class="dot" onclick="currentSlide(2)"></span>
                 <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
             </div>
 
             <a class="prev" onclick="plusSlides(-1)">❮</a>
@@ -544,10 +591,16 @@
 
             <ul class="socials">
                 <li>
-                    <a href="#"><i class='bx bxl-facebook-circle'></i></a>
+                    <a href="https://www.facebook.com/AIESECLK"><i class='bx bxl-facebook-circle'></i></a>
                 </li>
                 <li>
-                    <a href="#"><i class='bx bxl-youtube'></i></a>
+                    <a href="https://www.youtube.com/@AIESECinSriLanka"><i class='bx bxl-youtube'></i></a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/company/aieseclk/"><i class='bx bxl-linkedin-square'></i></a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/aieseclk"><i class='bx bxl-twitter'></i></a>
                 </li>
             </ul>
 

@@ -4,9 +4,23 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width-device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="../src/favicon/favicon1.png">
     <title>Login page</title>
+    <style>
+        @media (max-width: 768px) {
+            .wrapper {
+                max-width: 100%;
+                padding:0 10px;
+                left: 0;
+                padding-left: 0;
+            }
+            .logincontainer {
+                height: auto;
+            }
+        }
+    </style>
+
     <link rel="stylesheet" href="../style/style.css">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

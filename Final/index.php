@@ -1,3 +1,5 @@
+<?php include "php/queries.php"; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -248,21 +250,21 @@
                 important to us."
               </p>
 
-              <form action="#">
+              <form action="" method="POST">
                 <div class="input-box">
-                  <input type="text" placeholder="Enter your name" />
+                  <input type="text" name="name" placeholder="Enter your name" />
                 </div>
 
                 <div class="input-box">
-                  <input type="text" placeholder="Enter your email" />
+                  <input type="text" name="email" placeholder="Enter your email" />
                 </div>
 
                 <div class="input-box message-box">
-                  <textarea></textarea>
+                  <textarea name="message" placeholder="Enter your message"></textarea>
                 </div>
 
                 <div class="button">
-                  <input type="button" value="Submit" />
+                  <button type="submit" name="submitContactus" class="btn">Submit</button>
                 </div>
               </form>
             </div>
