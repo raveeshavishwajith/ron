@@ -126,8 +126,8 @@
             </label>
             <br>
             <label class="checkbox">
-              <input type="checkbox" name="membership[]" id="CompSoc" value="CompSoc">
-              CompSoc
+              <input type="checkbox" name="membership[]" id="AIESEC" value="AIESEC">
+              AIESEC
               <span></span>
             </label>
           </div>
